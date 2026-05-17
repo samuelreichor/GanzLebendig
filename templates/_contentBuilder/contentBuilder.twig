@@ -1,0 +1,72 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  section='contentBuilder',
+  data={
+    contentQuery: null,
+  },
+  classes= {
+    root: '',
+  },
+) %}
+
+{% if props.data.contentQuery %}
+  <div class="{{ props.classes.root }}">
+    {% for matrixBlock in props.data.contentQuery.eagerly().all() %}
+      {% set params = null %}
+      {% set blockName = null %}
+      {% switch matrixBlock.type.handle %}
+
+      {% case 'block_text' %}
+        {% set params = {
+          data: {
+            text: matrixBlock.searchableRichText ??? '',
+          },
+        } %}
+
+      {% case 'block_image' %}
+        {% set params = {
+          data: {
+            image: matrixBlock.image[0] ??? null,
+            showCaption: true,
+          },
+        } %}
+
+      {% case 'block_imageAndText' %}
+        {% set params = {
+          data: {
+            image: matrixBlock.image[0] ??? null,
+            text: matrixBlock.searchableRichText ??? '',
+            link: matrixBlock.linkBlock.eagerly().one() ??? null,
+            showCaption: true,
+          },
+          variants: {
+            switched: matrixBlock.lightSwitch ? 'true' : 'false',
+          },
+        } %}
+
+      {% case 'block_link' %}
+        {% set params = {
+          data: {
+            link: {
+              text: matrixBlock.searchableLinkText ??? '',
+              url: matrixBlock.linkUrl.value ??? '',
+              target: matrixBlock.openInNewTab ??? false,
+              linkVariant: matrixBlock.linkVariant.value ??? 'primary',
+            },
+          },
+        } %}
+
+      {% endswitch %}
+      {% if params is defined %}
+        {% set blockName = blockName|default(matrixBlock.type) %}
+        {{ include('_contentBuilder/blocks/'~blockName~'/'~blockName~'.twig',
+          params | merge({
+            classes: {
+              root: 'm-top-default'
+            }
+          }), with_context = false) }}
+      {% endif %}
+
+    {% endfor %}
+  </div>
+{% endif %}

@@ -1,0 +1,9 @@
+config
+node_modules
+storage
+vendor
+ferdi
+.ddev
+.github
+web
+storage

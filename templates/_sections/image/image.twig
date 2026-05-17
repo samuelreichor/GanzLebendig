@@ -1,0 +1,30 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  section='image',
+  data={
+    image: null,
+    optional: {
+      showCaption: false,
+      transform: 'auto',
+      objectFit: '',
+    }
+  },
+  classes={
+    root: 'container',
+  }
+) %}
+
+{% if props.data.image %}
+  <div class="{{ props.classes.root }}">
+    {{ include('_components/image/image.twig', {
+      data: {
+        image: props.data.image,
+        transform: props.data.transform,
+        showCaption: props.data.showCaption,
+      },
+      classes: {
+        root: 'col-span-full',
+      }
+    }, with_context = false) }}
+  </div>
+{% endif %}

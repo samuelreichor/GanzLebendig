@@ -1,0 +1,79 @@
+altTranslationKeyFormat: null
+altTranslationMethod: none
+fieldLayouts:
+  4e87007f-7c59-4fa3-8e11-4dabb0e11cc3:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 56f371ed-1973-4844-a0c6-5446c6af2b79
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 72fc0e5d-7d00-4b05-9bb2-899d78a9e66f # Alt Text
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b46de222-e36a-423d-bba2-7f2f27f07b8c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 1a6fb051-ad40-4976-811b-de8f4ae5d694 # Caption
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5c8aca5c-b991-454d-b3db-53a6955ef6d4
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d68d5bb5-076e-44c8-8b87-a1e8c0f60044
+        userCondition: null
+fs: files
+handle: files
+name: Files
+sortOrder: 5
+subpath: ''
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+transformFs: files
+transformSubpath: files

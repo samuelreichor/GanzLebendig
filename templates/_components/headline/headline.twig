@@ -1,0 +1,62 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  component='headline',
+  data={
+    text: '',
+    optional: {
+      size: 'h2',
+      tag: 'h2',
+      raw: false,
+      nl2br: false,
+    }
+  },
+  variants={
+    size: ['h2', 'h1', 'h3', 'h4', 'h5', 'h6'],
+    theme: ['default', 'onBackground'],
+  },
+  classes={
+    root: 'headline-root',
+    size: {
+      h1: {
+        root: 'h1-styling'
+      },
+      h2: {
+        root: 'h2-styling'
+      },
+      h3: {
+        root: 'h3-styling'
+      },
+      h4: {
+        root: 'h4-styling'
+      },
+      h5: {
+        root: 'h5-styling'
+      },
+      h6: {
+        root: 'h6-styling'
+      },
+    },
+    theme: {
+      default: {
+        root: 'text-current',
+      },
+      onBackground: {
+        root: 'text-white',
+      },
+    },
+  }
+) %}
+
+{% if props.data.text %}
+  <{{ props.data.tag }} class="{{ props.classes.root }}">
+    {% if props.data.raw and props.data.nl2br %}
+      {{ props.data.text | raw | nl2br }}
+    {% elseif props.data.raw %}
+      {{ props.data.text | raw }}
+    {% elseif props.data.nl2br %}
+      {{ props.data.text | nl2br }}
+    {% else %}
+      {{ props.data.text }}
+    {% endif %}
+  </{{ props.data.tag}}>
+{% endif %}

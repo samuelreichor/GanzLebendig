@@ -1,0 +1,40 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  component='text',
+  data={
+    text: '',
+    optional: {
+      tag: 'div',
+      raw: false,
+    }
+  },
+  variants={
+    size: ['base', 'large'],
+    theme: ['default', 'onBackground'],
+  },
+  classes={
+    root: 'c-text--richText',
+    size: {
+      base: {
+        root: 'text-base'
+      },
+      large: {
+        root: 'text-lg'
+      },
+    },
+    theme: {
+      default: {
+        root: 'text-current',
+      },
+      onBackground: {
+        root: 'text-white',
+      },
+    },
+  }
+) %}
+
+{% if props.data.text %}
+  <{{ props.data.tag }} class="{{ props.classes.root }}">
+    {{ props.data.raw ? props.data.text | raw : props.data.text }}
+  </{{ props.data.tag}}>
+{% endif %}

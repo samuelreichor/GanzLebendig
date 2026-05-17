@@ -1,0 +1,46 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  component='navigation',
+  data={
+    nodes: null,
+  },
+  classes={
+    root: 'js-navigation container bg-black text-white',
+    skipMenu: 'focus:translate-y-0 -translate-y-full absolute inset-x-0 h-full flex justify-center items-center bg-white text-black font-bold text-base z-50 opacity-90',
+    navigation: 'col-span-full flex justify-between items-center',
+    hamburger: 'js-hamburger hamburger block absolute right-4 top-0 bottom-0 my-auto w-6 h-6 md:hidden',
+    navigationNodes: 'navigation-nodes hidden md:flex md:gap-4',
+  }
+) %}
+
+{% if props.data.nodes %}
+  <div class="{{ props.classes.root }}">
+    <a class="{{ props.classes.skipMenu }}" href="#main">{{ 'translate.navigation.skipMenu' | t }}</a>
+    <nav class="{{ props.classes.navigation }}">
+      {% set ariaLabelLogo = seomatic.site.siteName ~ ' | ' ~ craft.entries.section('home').one().title %}
+      <a href="{{ siteUrl }}" aria-label="{{ ariaLabelLogo }}" {% if craft.app.request.segments|length == 0 %} aria-current="page" {% endif %}>
+        LOGO
+      </a>
+
+      <button class="{{ props.classes.hamburger }}"
+              aria-controls="primary-navigation"
+              aria-expanded="false"
+              aria-disabled="false">
+        <span class="sr-only">{{ 'translate.navigation.menu'|t }}</span>
+        <span class="hamburger-menu" aria-hidden="true"></span>
+      </button>
+        <ul id="primary-navigation" class="{{ props.classes.navigationNodes }}">
+          {% nav node in props.data.nodes %}
+            <li>
+              {{ node.link }}
+              {% ifchildren %}
+                <ul>
+                  {% children %}
+                </ul>
+              {% endifchildren %}
+            </li>
+          {% endnav %}
+        </ul>
+    </nav>
+  </div>
+{% endif %}

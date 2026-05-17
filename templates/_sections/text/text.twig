@@ -1,0 +1,35 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  section='text',
+  data={
+    text: '',
+    optional: {
+      textTag: 'div',
+      textRaw: false,
+      textTheme: 'default',
+      textSize: 'base',
+    }
+  },
+  classes={
+    root: 'container',
+  }
+) %}
+
+{% if props.data.text %}
+  <div class="{{ props.classes.root }}">
+    {{ include('_components/text/text.twig', {
+      data: {
+        text: props.data.text,
+        tag: props.data.textTag,
+        raw: props.data.textRaw,
+      },
+      variants: {
+        size: props.data.textSize,
+        theme: props.data.textTheme,
+      },
+      classes: {
+        root: 'col-span-full',
+      },
+    }, with_context = false) }}
+  </div>
+{% endif %}

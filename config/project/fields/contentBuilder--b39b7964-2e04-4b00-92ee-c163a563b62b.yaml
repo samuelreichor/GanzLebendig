@@ -1,0 +1,23 @@
+columnSuffix: null
+handle: contentBuilder
+instructions: null
+name: Content
+searchable: true
+settings:
+  createButtonLabel: 'New Block'
+  entryTypes:
+    - e1c7cfa0-c34e-4547-bd78-7eb71f251565 # Block: Text
+    - 7c8c16e4-d5b0-4b0a-9d51-5c9f64a9a226 # Block: Link
+    - d0e0b0d1-923a-4023-8086-6d35fc5ccaa4 # Block: Image
+    - ef87572b-5f4b-48cf-8d27-f9c045a9044f # Block: Image and Text
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

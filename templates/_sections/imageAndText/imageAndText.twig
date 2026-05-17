@@ -1,0 +1,70 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  section='imageAndText',
+  data={
+    image: null,
+    text: '',
+    optional: {
+      showCaption: false,
+      link: null,
+      imageRatio: 'landscape',
+    },
+  },
+  variants={
+    switched: ['false', 'true'],
+  },
+  classes={
+    root: 'container flex flex-wrap md:flex-nowrap gap-x-4 mx-auto',
+    textWrapper: 'w-full md:w-1/2',
+    text: 'md:text-lg',
+    imageWrapper: 'w-full md:w-1/2',
+    image: 'w-full h-full',
+    buttonWrapper: 'mt-2',
+    switched: {
+      true: {
+        textWrapper: 'order-last',
+        imageWrapper: 'order-first',
+      }
+    }
+  }
+) %}
+
+{% if props.data.text and props.data.image %}
+  <div class="{{ props.classes.root }}">
+    <div class="{{ props.classes.textWrapper }}">
+      {{ include('_components/text/text.twig', {
+        data: {
+          text: props.data.text,
+        },
+        classes: {
+          custom: props.classes.text,
+        }
+      }, with_context = false) }}
+
+      {% if props.data.link %}
+        <div class="{{ props.classes.buttonWrapper }}">
+          {{ include('_components/linkButton/linkButton.twig', {
+            data: {
+              link: props.data.link,
+            },
+          }, with_context = false) }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="{{ props.classes.imageWrapper }}">
+      {% if props.data.image ??? null %}
+        {{ include('_components/image/image.twig', {
+          data: {
+            image: props.data.image,
+            transform: props.data.imageRatio,
+            objectFit: 'cover',
+            showCaption: props.data.showCaption,
+          },
+          classes: {
+            custom: props.classes.image,
+          }
+        }, with_context = false) }}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

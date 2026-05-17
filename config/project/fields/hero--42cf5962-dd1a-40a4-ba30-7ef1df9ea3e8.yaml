@@ -1,0 +1,20 @@
+columnSuffix: null
+handle: hero
+instructions: null
+name: Hero
+searchable: true
+settings:
+  createButtonLabel: null
+  entryTypes:
+    - 85791974-a24c-4d14-b99e-42c54b978841 # Block: Hero
+  includeTableView: false
+  maxEntries: 1
+  minEntries: 1
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

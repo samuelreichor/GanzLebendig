@@ -1,0 +1,220 @@
+dateModified: 1757401569
+email:
+  fromEmail: admin@fredmansky.at
+  fromName: $SITE_NAME
+  replyToEmail: null
+  template: ''
+  transportSettings:
+    token: $MAILERSEND_API_TOKEN
+  transportType: studioespresso\mailersend\Adapter
+fs:
+  files:
+    hasUrls: true
+    name: Files
+    settings:
+      path: '@webroot/assets/files/files'
+    type: craft\fs\Local
+    url: '@web/assets/files/files'
+  graphics:
+    hasUrls: true
+    name: Graphics
+    settings:
+      path: '@webroot/assets/images/graphics'
+    type: craft\fs\Local
+    url: '@web/assets/images/graphics'
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      path: '@webroot/assets/images/images'
+    type: craft\fs\Local
+    url: '@web/assets/images/images'
+  templateImages:
+    hasUrls: true
+    name: 'Template Images'
+    settings:
+      path: '@webroot/assets/images/templateImages'
+    type: craft\fs\Local
+    url: '@web/assets/images/templateImages'
+  users:
+    hasUrls: false
+    name: Users
+    settings:
+      path: '@webroot/assets/images/users'
+    type: craft\fs\Local
+    url: '@web/assets/users'
+meta:
+  __names__:
+    1a6fb051-ad40-4976-811b-de8f4ae5d694: Caption # Caption
+    1a680df0-fe66-4d73-b7f9-c9eda8c96f05: Size # Size
+    2b49a2c6-1b7d-402b-936e-190a5906cd75: Form # Form
+    2c9430af-5272-4806-a33f-9364d065ac83: Default # Default
+    4ba32469-66ba-4233-8faf-e5f819134881: Headline # Headline
+    5b4128b6-7a56-4620-a5a3-fa59c4f90211: 'Contact Form' # Contact Form
+    5cce6b80-a35c-4207-82e0-3940c9091376: Images # Images
+    6ae0efee-76bc-45ec-9f5c-d0e2f54d8ef0: Default # Default
+    7c8c16e4-d5b0-4b0a-9d51-5c9f64a9a226: 'Block: Link' # Block: Link
+    7f970b21-4477-4584-8c42-bb2768e327c2: 'Light Switch' # Light Switch
+    9b8f35b7-0309-476b-9ca6-654d6d620e69: 'Public Schema' # Public Schema
+    9c216cc1-6bef-4496-a511-d619bfcd210d: 'Seo Settings' # Seo Settings
+    11fc60e3-4c8a-41a9-ac13-03a2215dee08: 'Link Variant' # Link Variant
+    42cf5962-dd1a-40a4-ba30-7ef1df9ea3e8: Hero # Hero
+    72fc0e5d-7d00-4b05-9bb2-899d78a9e66f: 'Alt Text' # Alt Text
+    78eb4c24-9ee0-4fe1-85b6-902352ffc6af: Code # Code
+    114adcdf-ab31-4d8f-8fb5-add7702e476a: Icon # Icon
+    531bd093-889b-45b8-bb21-f513349ff7f7: 'Headline Tag' # Headline Tag
+    648c0fe1-b09f-4f06-ae84-374277216c64: 'Link Url' # Link Url
+    695fdc9b-7cb6-4172-ad4a-2194854c587e: Text # Text
+    1854f3be-cac9-430d-bde8-9093b969668c: Errors # Errors
+    4029eccd-d1d9-4076-81f9-58f315a363f2: 'Entry: Default' # Entry: Default
+    5502ecc3-271c-47e8-99ff-d06fe1a603a2: Editors # Editors
+    31453c43-6490-4c7f-ae24-da061e930401: Image # Image
+    93116f68-b0f3-4e73-818b-9d4c0a2d4b57: Headline # Headline
+    745244db-cd1b-4b14-ab0f-07d6ddcf070f: Home # Home
+    8352538e-0d17-48be-bf6d-c03a439cb40a: 'Template Images' # Template Images
+    61520300-516c-4f2d-b7ec-b377b45ac195: New # New
+    85791974-a24c-4d14-b99e-42c54b978841: 'Block: Hero' # Block: Hero
+    a94c302a-1da9-4e98-96b1-36d23ce0235b: Pages # Pages
+    a536dc09-ff34-40c6-9e0f-ab3cc3f4ce8e: Text # Text
+    b39b7964-2e04-4b00-92ee-c163a563b62b: Content # Content
+    b63d74dd-526d-4b25-a4e1-180d20f51923: 'Entry: Contact' # Entry: Contact
+    b2522ae5-a1f7-4bcd-b27f-55546c01dab7: 'Link Text' # Link Text
+    c5b55746-9b95-40a4-9e04-178618e02cff: Graphics # Graphics
+    c468dcb3-1a1d-4f59-bc62-d1410ddb0fe3: 'Open in New Tab' # Open in New Tab
+    d0b81f54-9f0b-47ff-8b70-ede217a82e9d: $SITE_NAME # $SITE_NAME
+    d0e0b0d1-923a-4023-8086-6d35fc5ccaa4: 'Block: Image' # Block: Image
+    d71b8bcd-b412-49bf-95af-9df0c8410585: Link # Link
+    d99f9653-f764-42e2-8722-2d17f41c2367: Size # Size
+    e1c7cfa0-c34e-4547-bd78-7eb71f251565: 'Block: Text' # Block: Text
+    e4838186-e61d-4455-ae88-4e0b9abe8711: Users # Users
+    ef87572b-5f4b-48cf-8d27-f9c045a9044f: 'Block: Image and Text' # Block: Image and Text
+    f39c88c2-b6fe-4cd9-adb5-17e58f0ebcb8: Files # Files
+    f8880613-ce1c-42ee-adaa-3a49591c464f: Logos # Logos
+    fd83b0ff-09c2-4451-9f86-4c846bf92557: 'Main Navigation' # Main Navigation
+plugins:
+  _proper:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  ckeditor:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0.0
+  cp-css:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+    settings:
+      additionalCss: ''
+      cacheBusting: true
+      cssFile: /dist/assets/cp.css
+  cp-field-inspect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  dumper:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  elements-panel:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  empty-coalesce:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  formie:
+    edition: standard
+    enabled: true
+    licenseKey: $PLUGIN_FORMIE
+    schemaVersion: 3.4.8
+  image-resizer:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  imager-x:
+    edition: pro
+    enabled: true
+    licenseKey: $PLUGIN_IMAGER_X
+    schemaVersion: 4.0.0
+  mailersend:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  navigation:
+    edition: standard
+    enabled: true
+    licenseKey: $PLUGIN_NAVIGATION
+    schemaVersion: 2.1.0
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: $PLUGIN_SEOMATIC
+    schemaVersion: 3.0.12
+    settings:
+      addHrefLang: true
+      addPaginatedHreflang: true
+      addXDefaultHrefLang: true
+      alwaysIncludeCanonicalUrls: false
+      cpTitlePrefix: '⚙ '
+      cspNonce: ''
+      cspScriptSrcPolicies:
+        -
+          __assoc__:
+            -
+              - policy
+              - '''self'''
+      devModeCpTitlePrefix: '🚧⚙ '
+      devModeTitlePrefix: '🚧 '
+      displayAnalysisSidebar: true
+      displayPreviewSidebar: true
+      enableDebugToolbarPanel: true
+      enableJsonLdEndpoint: false
+      enableMetaContainerEndpoint: false
+      enableSeoFileLinkEndpoint: false
+      environment: local
+      excludeNonCanonicalUrls: false
+      generatorEnabled: false
+      headersEnabled: true
+      includeHomepageInBreadcrumbs: true
+      lowercaseCanonicalUrl: true
+      manuallySetEnvironment: false
+      maxDescriptionLength: 155
+      maxTitleLength: 70
+      metaCacheDuration: 0
+      pluginName: SEOmatic
+      regenerateSitemapsAutomatically: true
+      renderEnabled: true
+      separatorChar: '|'
+      sidebarDisplayPreviewTypes:
+        - google
+        - twitter
+        - facebook
+      siteGroupsSeparate: true
+      siteUrlOverride: ''
+      sitemapsEnabled: true
+      socialMediaPreviewTarget: true
+      submitSitemaps: true
+      truncateDescriptionTags: true
+      truncateTitleTags: true
+      xDefaultSite: 0
+  smith:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  templatecomments:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  vite:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: pro
+  live: true
+  name: $SITE_NAME
+  retryDuration: null
+  schemaVersion: 5.5.0.0
+  timeZone: Europe/Vienna

@@ -1,0 +1,36 @@
+columnSuffix: null
+handle: linkUrl
+instructions: null
+name: 'Link Url'
+searchable: false
+settings:
+  maxLength: 255
+  typeSettings:
+    __assoc__:
+      -
+        - url
+        -
+          __assoc__:
+            -
+              - allowRootRelativeUrls
+              - ''
+            -
+              - allowAnchors
+              - ''
+      -
+        - entry
+        -
+          __assoc__:
+            -
+              - sources
+              -
+                - singles
+                - 'section:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+  types:
+    - url
+    - email
+    - entry
+    - tel
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Link

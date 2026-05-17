@@ -1,0 +1,44 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  component='image',
+  data={
+    image: {
+      type: 'asset',
+      about: 'A Craft image asset'
+    },
+    optional: {
+      showCaption: false,
+      dominantColor: false,
+      lazy: true,
+      transform: 'auto',
+      objectFit: '',
+    }
+  },
+  classes={
+    root: '',
+  }
+) %}
+
+{% import '_macros/_macro-imageHelper.twig' as imageHelper %}
+
+{% set image = props.data.image %}
+
+{% if imageHelper.isTransformable(image) %} {# use <picture> if the image is jpg or png and image transforms are created #}
+  {% set transformedImages = craft.imager.transformImage(image, props.data.transform) %}
+  {% set transformedImage = transformedImages|last %}
+  {% set placeholder = imageHelper.getPlaceHolder(image, transformedImage.width, transformedImage.height, props.data.dominantColor) %}
+  <picture class="{{ props.classes.root }}">
+    {{- imageHelper.renderSource(image, props.data.transform, transformedImages, props.data.lazy) -}}
+    {{- imageHelper.renderImage(image, placeholder, props.data.lazy, props.data.objectFit) -}}
+    {% if props.data.lazy %}
+      {{- imageHelper.renderNoScript(image) -}}
+    {% endif %}
+  </picture>
+
+{% else %} {# use <img> per default #}
+  {% set placeholder = imageHelper.getPlaceHolder(image, image.width, image.height, props.data.dominantColor) %}
+  {{- imageHelper.renderImage(image, placeholder, props.data.lazy, props.data.objectFit, props.classes) -}}
+  {% if props.data.lazy %}
+    {{- imageHelper.renderNoScript(image) -}}
+  {% endif %}
+{% endif %}

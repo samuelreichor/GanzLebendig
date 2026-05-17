@@ -1,0 +1,27 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  - 4029eccd-d1d9-4076-81f9-58f315a363f2 # Entry: Default
+handle: errorPages
+maxAuthors: 1
+name: Errors
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  d0b81f54-9f0b-47ff-8b70-ede217a82e9d: # $SITE_NAME
+    enabledByDefault: false
+    hasUrls: true
+    template: _pages/entry.twig
+    uriFormat: 'errors/{slug}'
+type: channel

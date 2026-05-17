@@ -1,0 +1,24 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  component='form',
+  data={
+    form: null,
+  },
+  classes={
+    root: '',
+  }
+) %}
+
+{% if props.data.form %}
+  {% set renderOptions = {
+    themeConfig: {
+      form: {
+        attributes: {
+          class: props.classes.root,
+        },
+      },
+    },
+  } %}
+
+  {{ craft.formie.renderForm(props.data.form, renderOptions) }}
+{% endif %}

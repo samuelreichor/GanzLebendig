@@ -1,0 +1,39 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  component='image',
+  data={
+    image: {
+      type: 'asset',
+      about: 'A Craft image asset'
+    },
+    optional: {
+      showCaption: false,
+      dominantColor: false,
+      lazy: true,
+      transform: 'auto',
+      objectFit: '',
+    }
+  },
+  classes={
+    root: '',
+  }
+) %}
+
+{% if props.data.image %}
+  {% if props.data.showCaption and props.data.image.caption %}
+    {{ include('_components/image/partials/figure.twig', {
+      data: props.data,
+      classes: {
+        root: props.classes.root
+      }
+    }, with_context = false) }}
+
+  {% else %}
+    {{ include('_components/image/partials/image.twig', {
+      data: props.data,
+      classes: {
+        root: props.classes.root
+      }
+    }, with_context = false) }}
+  {% endif %}
+{% endif %}

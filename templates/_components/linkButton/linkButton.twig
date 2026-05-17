@@ -1,0 +1,93 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  component='linkButton',
+  data={
+    link: {
+      type: ['?Entry', 'map'],
+      about: 'Map format: {url=string, text=string, target=bool}'
+    },
+    optional: {
+      tag: 'a',
+      additionalAttrs: {
+        about: 'Set additional attributes as an array of key value pairs [{key: value},...]',
+        default: null,
+      },
+    }
+  },
+  variants={
+    style: {
+      options: ['primary','secondary', 'link'],
+      default: _context.data.link.linkVariant.value ??? 'primary',
+    },
+    align: ['left', 'center', 'right'],
+  },
+  classes={
+    root: '',
+    variantStyle: 'relative inline-block transition duration-300 ease-out hover:ease-in rounded',
+    size: '',
+    style: {
+      primary:{
+        variantStyle: 'bg-black hover:bg-white text-white hover:text-black border-black border-2',
+        size: 'py-3 px-6',
+      },
+      secondary: {
+        variantStyle: 'hover:bg-black text-black hover:text-white border-black border-2',
+        size: 'py-3 px-6',
+      },
+      link: {
+        variantStyle: 'underline hover:text-error',
+      },
+    },
+    align: {
+      left: {
+        root: 'text-left',
+      },
+      center: {
+        root: 'text-center',
+      },
+      right: {
+        root: 'text-right',
+      },
+    }
+  }
+) %}
+
+{# -- Set the Link Data -- #}
+{% set linkUrl = props.data.link.url ??? props.data.link.linkUrl.value ??? '' %}
+{% set linkText = props.data.link.text ??? props.data.link.searchableLinkText ??? '' %}
+{% set linkTarget = props.data.link.target ??? props.data.link.openInNewTab ??? false %}
+
+{% if linkUrl and linkText %}
+  {# -- Set the Tag -- #}
+  {% set tag = props.data.tag %}
+
+  {# -- Merge all attributes -- #}
+  {% set attrArr = [] %}
+
+  {# Merge href #}
+  {% if tag == 'a' %}
+    {% set href = 'href="' ~ linkUrl ~ '"' %}
+    {% set attrArr = attrArr|merge([href]) %}
+
+    {# Merge target #}
+    {% if linkTarget %}
+      {% set target = 'target="_blank"' %}
+      {% set attrArr = attrArr|merge([target]) %}
+    {% endif %}
+  {% endif %}
+
+  {# Merge all other attributes #}
+  {% if props.data.additionalAttrs %}
+    {% for k, v in props.data.additionalAttrs %}
+      {% set attr = k ~ '="' ~ v ~ '"' %}
+      {% set attrArr = attrArr|merge([attr]) %}
+    {% endfor %}
+  {% endif %}
+
+<div class="{{ props.classes.root }}">
+  <{{ tag }} class="{{ props.classes.variantStyle }} {{ props.classes.size }}
+  " {% for attr in attrArr %}{{ attr|raw }} {% endfor %}>
+  {{ linkText }}
+  </{{ tag }}>
+  </div>
+{% endif %}

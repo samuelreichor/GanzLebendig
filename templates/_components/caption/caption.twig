@@ -1,0 +1,20 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  component='caption',
+  data={
+    text: ''
+  },
+  classes={
+    root: '',
+  }
+) %}
+
+{% if props.data.text %}
+  <caption class="{{ props.classes.root }}">
+    {{ include('_components/text/text.twig', {
+      data: {
+        text: props.data.text,
+      }
+    }, with_context = false) }}
+  </caption>
+{% endif %}

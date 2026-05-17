@@ -1,0 +1,25 @@
+{% extends "_layouts/_layout-global-variables.twig" %}
+
+{% block htmlPage %}
+  <!DOCTYPE html>
+  <html lang="{{ craft.app.language |slice(0,2) }}">
+  <head>
+    {% block head %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="initial-scale=1,minimum-scale=1,width=device-width,viewport-fit=cover">
+
+      {{ include('_layouts/_partials/preconnects.twig') }}
+      {{ include('_layouts/_partials/fonts.twig') }}
+      {#        {{ include('_layouts/_partials/critical-css.twig') }} #}
+      {{ include('_layouts/_partials/favicon.twig') }}
+    {% endblock %}
+  </head>
+
+  <body>
+  {% block body %}
+  {% endblock %}
+
+  {{ craft.vite.script("assets/js/app.ts") }}
+  </body>
+  </html>
+{% endblock %}

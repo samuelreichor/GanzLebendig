@@ -1,0 +1,44 @@
+{% extends "_layouts/_layout-base.twig" %}
+
+{% block body %}
+  {% block navigation %}
+    {% set nodes = craft.navigation.nodes().level(1).with(['children']).all() %}
+    {% if nodes %}
+      {{ include('_components/navigation/navigation.twig', {
+        data: {
+          nodes: nodes ??? null,
+        },
+      }, with_context = false) }}
+    {% endif %}
+  {% endblock %}
+
+  <main id="main">
+    {% block hero %}
+      {% set hero = entry.hero.eagerly().one() %}
+      {{ include('_sections/hero/hero.twig', {
+        data: {
+          image: hero.image.eagerly().one() ??? null,
+          headline: hero.searchablePlainText ??? '',
+          text: hero.searchableRichText ??? null,
+          link: hero.linkBlock.eagerly().one() ??? null,
+        },
+      }, with_context = false) }}
+    {% endblock %}
+
+    {% block content %}
+      {{ include('_contentBuilder/contentBuilder.twig', {
+        data: {
+          contentQuery: entry.contentBuilder ??? null,
+        },
+      }, with_context = false) }}
+    {% endblock %}
+
+    {% if getenv('CRAFT_ENVIRONMENT') != "production" %}
+      {{ include('_components/gridOverlay/gridOverlay.twig') }}
+    {% endif %}
+  </main>
+
+  {% block footer %}
+    <footer></footer>
+  {% endblock %}
+{% endblock %}

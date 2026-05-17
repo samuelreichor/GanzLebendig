@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: searchableRichText
+instructions: null
+name: Text
+searchable: true
+settings:
+  availableTransforms: ''
+  availableVolumes:
+    - f39c88c2-b6fe-4cd9-adb5-17e58f0ebcb8 # Files
+  ckeConfig: 6ae0efee-76bc-45ec-9f5c-d0e2f54d8ef0 # Default
+  createButtonLabel: null
+  defaultTransform: null
+  enableSourceEditingForNonAdmins: true
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

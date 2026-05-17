@@ -1,0 +1,11 @@
+COMMIT_MSG_FILE="$1"
+COMMIT_MSG_CONTENT=$(cat "$COMMIT_MSG_FILE")
+
+if [[ $COMMIT_MSG_CONTENT =~ ^(fixup!|squash!) ]]; then
+    exit 0
+fi
+
+if ! [[ $COMMIT_MSG_CONTENT =~ ^[A-Z] ]]; then
+    echo "Error: The commit message should start with an uppercase letter."
+    exit 1
+fi

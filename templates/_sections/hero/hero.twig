@@ -1,0 +1,58 @@
+{# >>> Comp Settings #}
+{% set props = defineProps(_context,
+  section='hero',
+  data={
+    image: null,
+    headline: '',
+    optional: {
+      text: null,
+      link: null,
+    }
+  },
+  classes={
+    root: 'container',
+    textCol: 'col-span-full md:col-span-4 space-y-5',
+    imageCol: 'col-span-full md:col-start-6 md:col-end-13',
+  },
+) %}
+
+{% if props.data.image and props.data.headline %}
+  <header class="{{ props.classes.root }}">
+    {# ---- Left Column ---- #}
+    <div class="{{ props.classes.textCol }}">
+      {{ include('_components/headline/headline.twig', {
+        data: {
+          text: props.data.headline ??? '',
+          tag: 'h1',
+        },
+        variants: {
+          size: 'h1',
+        },
+      }, with_context = false) }}
+
+      {{ include('_components/text/text.twig', {
+        data: {
+          text: props.data.text ??? '',
+        }
+      }, with_context = false) }}
+
+      {{ include('_components/linkButton/linkButton.twig', {
+        data: {
+          link: props.data.link ??? '',
+        }
+      }, with_context = false) }}
+    </div>
+
+    {# ---- Right Column ---- #}
+    {{ include('_components/image/image.twig', {
+      data: {
+        image: props.data.image ??? null,
+        objectFit: 'cover',
+        transform: 'landscape',
+      },
+      classes: {
+        root: props.classes.imageCol
+      }
+    }, with_context = false) }}
+  </header>
+{% endif %}

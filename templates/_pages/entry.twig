@@ -1,0 +1,9 @@
+{# Entry Router #}
+{# ---------------------------------------------------------------------- #}
+{% set entryType = entry.type.handle|replace('entry_', '') %}
+
+ {{ include([
+   '_pages/' ~ entry.section.handle ~ '/' ~ entryType,
+   '_pages/' ~ entry.section.handle ~ '/default',
+   '_pages/errorPages/' ~ entry.slug,
+ ]) }}
