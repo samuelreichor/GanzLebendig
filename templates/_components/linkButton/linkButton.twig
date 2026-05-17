@@ -8,18 +8,20 @@
     align: 'left',
   },
   classes: {
-    root: 'relative inline-block transition duration-300 ease-out hover:ease-in rounded',
+    root: 'relative inline-flex items-center justify-center font-medium tracking-wide transition-colors duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50',
     custom: '',
   },
   variants: {
     style: {
-      primary: 'bg-black hover:bg-white text-white hover:text-black border-black border-2',
-      link: 'underline hover:text-error',
+      primary: 'bg-sage-500 text-cream-50 hover:bg-sage-700 rounded-full shadow-sm hover:shadow-md',
+      secondary: 'bg-cream-100 text-ink-900 hover:bg-cream-200 border border-cream-200 rounded-full',
+      ghost: 'bg-transparent text-sage-700 hover:bg-sage-50 rounded-full border border-sage-300 hover:border-sage-500',
+      link: 'text-sage-700 hover:text-sage-900 underline decoration-sage-300 underline-offset-4 hover:decoration-sage-700',
     },
     size: {
-      base: 'py-3 px-6',
+      base: 'py-3 px-7 text-base',
       link: '',
-      big: '',
+      big: 'py-4 px-9 text-lg',
     },
     align: {
       left: 'text-left',
@@ -47,7 +49,7 @@
 {% if linkText and linkUrl %}
   <div class="{{ props.data.name }} {{ props.variants.align[props.data.align] }} {{ props.classes.custom }}">
     <{{ tag }} href="{{ linkUrl }}"{% if linkTarget %} target="{{ linkTarget }}"{% endif %}
-    class="{{ props.classes.root }} {{ props.variants.align[props.data.align] }} {{ props.variants.style[props.data.linkStyle] }} {{ props.data.linkStyle == 'link' ? props.variants.size.link : props.variants.size.base }}
+    class="{{ props.classes.root }} {{ props.variants.style[props.data.linkStyle] }} {{ props.data.linkStyle == 'link' ? props.variants.size.link : props.variants.size.base }}
     ">
     {{ linkText }}
     </{{ tag }}>

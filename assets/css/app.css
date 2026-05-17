@@ -7,4 +7,5 @@
 /* Global Components */
 @import '@templates/_components/text/text.css';
 @import '@templates/_components/headline/headline.css';
+@import '@templates/_components/navigation/navigation.css';
 

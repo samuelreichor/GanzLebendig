@@ -1,7 +1,49 @@
 @theme {
   --color-*: initial;
-  --color-transparent: 'transparent';
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
   --color-white: #fff;
   --color-black: #000;
-  --color-primary: #342
+
+  /* Sage — primary brand green derived from logo. */
+  --color-sage-50: #f3f6ed;
+  --color-sage-100: #e5ecd9;
+  --color-sage-200: #cbd9b6;
+  --color-sage-300: #afc28e;
+  --color-sage-400: #95ab75;
+  --color-sage-500: #7e9d65;
+  --color-sage-600: #647e51;
+  --color-sage-700: #4f6342;
+  --color-sage-800: #3e4d35;
+  --color-sage-900: #2d3825;
+
+  /* Cream — warm, soft neutral. Page backgrounds, section fills, dividers. */
+  --color-cream-50: #faf6ee;
+  --color-cream-100: #f3ecdb;
+  --color-cream-200: #e7dcc1;
+  --color-cream-300: #d4c39d;
+  --color-cream-400: #b8a47d;
+
+  /* Clay — warm terracotta accent. Sparing use for highlights / secondary CTA. */
+  --color-clay-300: #d4a78b;
+  --color-clay-500: #b8745b;
+  --color-clay-700: #76473a;
+
+  /* Ink — warm dark text colors. Avoid pure black for a softer feel. */
+  --color-ink-300: #b8b0a2;
+  --color-ink-500: #877d6e;
+  --color-ink-700: #524a3e;
+  --color-ink-900: #2c2620;
+
+  /* Semantic aliases */
+  --color-primary: var(--color-sage-500);
+  --color-primary-hover: var(--color-sage-700);
+  --color-bg: var(--color-cream-50);
+  --color-bg-muted: var(--color-cream-100);
+  --color-text: var(--color-ink-900);
+  --color-text-muted: var(--color-ink-700);
+  --color-accent: var(--color-clay-500);
+  --color-border: var(--color-cream-200);
+  --color-error: var(--color-clay-700);
 }

@@ -1,3 +1,18 @@
 @theme {
+  /* Lora — warm, friendly serif with good readability across sizes.
+     Loaded via Google Fonts in _layouts/_partials/fonts.twig. */
+  --font-sans: 'Petrona', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-serif: 'Petrona', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-display: 'Petrona', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
+  /* Border radius — soft, rounded shapes throughout. */
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
+  --radius-full: 9999px;
 }

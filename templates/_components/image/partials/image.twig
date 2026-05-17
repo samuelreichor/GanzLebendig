@@ -75,7 +75,7 @@
         alt="{{ altText }}"
         loading="{{ loadingAttr }}"
         decoding="async"
-        class="{{ lazyClass }}"
+        class="{{ props.classes.root }} {{ props.classes.custom }} {{ lazyClass }}"
         {% if inlineStyle %}style="{{ inlineStyle }}"{% endif %}
       >
     </picture>

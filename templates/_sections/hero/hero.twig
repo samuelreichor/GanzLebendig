@@ -8,11 +8,14 @@
     link: null,
   },
   classes: {
-    root: 'container p-top-md p-bottom-md items-center',
+    root: 'relative w-full overflow-hidden flex items-center',
     custom: '',
-    contentCol: 'col-span-12 md:col-span-6 lg:col-span-5 flex flex-col gap-ds-4',
-    imageCol: 'col-span-12 md:col-span-6 lg:col-start-7 lg:col-end-13',
-    linkWrapper: 'mt-ds-2',
+    bgWrap: 'absolute inset-0 z-0',
+    overlay: 'absolute inset-0 z-10 bg-gradient-to-b from-ink-900/40 via-ink-900/45 to-ink-900/70',
+    overlayTop: 'absolute top-0 inset-x-0 h-[calc(var(--navigation-height)+1rem)] z-10 bg-gradient-to-b from-ink-900/65 to-transparent pointer-events-none',
+    content: 'relative z-20 w-full outside-container text-center mt-[calc(var(--navigation-height)-1rem)]',
+    contentInner: 'max-w-2xl mx-auto flex flex-col items-center gap-ds-6',
+    linkWrapper: 'mt-ds-4',
   },
 } %}
 
@@ -22,26 +25,50 @@
   classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
 } %}
 
-{% if props.data.image or props.data.headline or props.data.text or props.data.link %}
-  <header class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
-    {% if props.data.headline or props.data.text or props.data.link %}
-      <div class="{{ props.classes.contentCol }}">
-        {% if props.data.headline %}
-          {{ include('_components/headline/headline.twig', {
-            data: {
-              text: props.data.headline,
-              variantSize: 'h1',
-              tag: 'h1',
-            },
-          }, with_context = false) }}
-        {% endif %}
+{% if props.data.headline %}
+  <header class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }} {{ not props.data.image ? 'bg-cream-100' }}">
+    {% if props.data.image %}
+      <div class="{{ props.classes.bgWrap }}">
+        {{ include('_components/image/image.twig', {
+          data: {
+            image: props.data.image,
+            objectFit: 'cover',
+            transform: 'landscape',
+            sizes: '100vw',
+            lazy: false,
+          },
+          classes: {
+            custom: '',
+          }
+        }, with_context = false) }}
+      </div>
+      <div class="{{ props.classes.overlay }}"></div>
+      <div class="{{ props.classes.overlayTop }}"></div>
+    {% endif %}
+
+    <div class="{{ props.classes.content }} {{ props.data.image ? 'py-ds-56' : 'py-ds-40' }}">
+      <div class="{{ props.classes.contentInner }}">
+        {{ include('_components/headline/headline.twig', {
+          data: {
+            text: props.data.headline,
+            variantSize: 'h1',
+            tag: 'h1',
+          },
+          classes: {
+            custom: props.data.image ? 'mx-auto !text-cream-50 drop-shadow-lg' : 'mx-auto !text-ink-900',
+          }
+        }, with_context = false) }}
 
         {% if props.data.text %}
           {{ include('_components/text/text.twig', {
             data: {
               text: props.data.text,
               raw: true,
+              size: 'xl',
             },
+            classes: {
+              custom: props.data.image ? 'mx-auto text-cream-50/95 drop-shadow-lg' : 'mx-auto text-ink-700',
+            }
           }, with_context = false) }}
         {% endif %}
 
@@ -50,24 +77,13 @@
             {{ include('_components/linkButton/linkButton.twig', {
               data: {
                 link: props.data.link,
+                align: 'center',
+                linkStyle: props.data.image ? 'secondary' : 'primary',
               },
             }, with_context = false) }}
           </div>
         {% endif %}
       </div>
-    {% endif %}
-
-    {% if props.data.image %}
-      {{ include('_components/image/image.twig', {
-        data: {
-          image: props.data.image,
-          objectFit: 'cover',
-          transform: 'landscape',
-        },
-        classes: {
-          custom: props.classes.imageCol,
-        }
-      }, with_context = false) }}
-    {% endif %}
+    </div>
   </header>
 {% endif %}

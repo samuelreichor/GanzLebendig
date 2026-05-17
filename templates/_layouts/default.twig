@@ -1,10 +1,18 @@
 {% extends "_layouts/_layout-base.twig" %}
 
+{% set globals = craft.entries.section('globals').eagerly().one() %}
+{% set heroImage = entry.hero.image.eagerly().one() ??? null %}
+
 {% block body %}
   {% block navigation %}
     {{ include('_components/navigation/navigation.twig', {
       data: {
-        nodes: [],
+        theme: heroImage ? 'overlay' : 'light',
+        nodes: globals.navigationsLinks.fixedOrder().eagerly().all()|map(l => {
+          url: l.getUrl(),
+          title: l.title,
+        }),
+        button: globals.navigationButton,
       },
     }, with_context = false) }}
   {% endblock %}
@@ -13,8 +21,8 @@
     {% block hero %}
       {{ include('_sections/hero/hero.twig', {
         data: {
-          image: entry.hero.image.eagerly().one() ??? null,
-          headline: entry.hero.headline ??? '',
+          image: heroImage,
+          headline: entry.hero.headline ??? entry.title ??? '',
           text: entry.hero.text ??? '',
           link: entry.hero.linkBase ??? null,
         },

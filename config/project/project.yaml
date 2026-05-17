@@ -1,4 +1,4 @@
-dateModified: 1779039367
+dateModified: 1779047202
 elementSources:
   craft\elements\Asset:
     -
@@ -160,6 +160,7 @@ meta:
     7f970b21-4477-4584-8c42-bb2768e327c2: 'Light Switch' # Light Switch
     9b8f35b7-0309-476b-9ca6-654d6d620e69: 'Public Schema' # Public Schema
     72fc0e5d-7d00-4b05-9bb2-899d78a9e66f: 'Alt Text' # Alt Text
+    78e52492-6ab5-4ac9-9e70-0448d9e80744: 'Navigations Links' # Navigations Links
     78eb4c24-9ee0-4fe1-85b6-902352ffc6af: Code # Code
     114adcdf-ab31-4d8f-8fb5-add7702e476a: Icon # Icon
     531bd093-889b-45b8-bb21-f513349ff7f7: 'Headline Tag' # Headline Tag

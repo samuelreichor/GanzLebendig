@@ -3,51 +3,97 @@
   data: {
     name: 'c-navigation',
     nodes: null,
+    button: null,
+    theme: 'overlay',
   },
   classes: {
-    root: 'js-navigation container bg-primary',
+    root: 'js-navigation absolute top-0 left-0 right-0 z-40 w-full',
+    inner: 'container items-center h-(--navigation-height)',
     custom: '',
-    skipMenu: 'focus:translate-y-0 -translate-y-full absolute inset-x-0 h-full flex justify-center items-center bg-white text-black font-bold text-base z-50 opacity-90',
-    navigation: 'col-span-full flex justify-between items-center',
-    hamburger: 'js-hamburger hamburger block absolute right-4 top-0 bottom-0 my-auto w-6 h-6 md:hidden',
-    navigationNodes: 'navigation-nodes hidden md:flex md:gap-4',
+    skipMenu: 'focus:translate-y-0 -translate-y-full absolute inset-x-0 h-full flex justify-center items-center bg-cream-50 text-ink-900 font-medium z-50 opacity-95',
+    bar: 'col-span-full flex justify-between items-center',
+    logo: 'relative z-10 block transition-opacity hover:opacity-80',
+    rightCluster: 'flex items-center gap-ds-4 md:gap-ds-6',
+    menu: 'navigation-nodes hidden md:flex md:items-center md:gap-ds-8',
+    menuList: 'flex flex-col md:flex-row md:items-center gap-ds-8',
+    ctaWrap: 'shrink-0 [&_a]:py-2 [&_a]:px-4 md:[&_a]:py-3 md:[&_a]:px-7 [&_a]:text-sm md:[&_a]:text-base',
+  },
+  variants: {
+    theme: {
+      overlay: {
+        logoImg: 'h-12 w-auto md:h-14 drop-shadow-lg',
+        menuLink: 'text-cream-50 hover:text-sage-200 transition-colors drop-shadow-md text-lg',
+        hamburger: 'js-hamburger hamburger relative z-10 block w-8 h-8 md:hidden text-cream-50',
+        buttonStyle: 'secondary',
+      },
+      light: {
+        logoImg: 'h-12 w-auto md:h-14',
+        menuLink: 'text-ink-700 hover:text-sage-700 transition-colors text-lg',
+        hamburger: 'js-hamburger hamburger relative z-10 block w-8 h-8 md:hidden text-ink-900',
+        buttonStyle: 'primary',
+      },
+    },
   },
 } %}
 
-{# >>> Merge data / classes / variansts (optional) #}
+{# >>> Merge data / classes #}
 {% set props = {
   data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
   classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+  variants: compDefaults.variants,
 } %}
 
-{% if props.data.nodes %}
-  <div class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
-    <a class="{{ props.classes.skipMenu }}" href="#main">{{ 'translate.navigation.skipMenu' | t }}</a>
-    <nav class="{{ props.classes.navigation }}">
-      {% set ariaLabelLogo = seomatic.site.siteName ~ ' | ' ~ craft.entries.section('home').one().title %}
-      <a href="{{ siteUrl }}" aria-label="{{ ariaLabelLogo }}" {% if craft.app.request.segments|length == 0 %} aria-current="page" {% endif %}>
-        LOGO
+{% set theme = props.variants.theme[props.data.theme] ??? props.variants.theme.overlay %}
+{% set hasNodes = props.data.nodes is iterable and props.data.nodes | length > 0 %}
+{% set hasButton = props.data.button is not empty and props.data.button.url ??? null %}
+{% set siteName = seomatic.site.siteName ??? 'Ganz Lebendig' %}
+
+{# Map nav-button {url, title} → Craft Link field shape {url, label} for linkButton component. #}
+{% set buttonLink = hasButton ? {
+  url: props.data.button.url,
+  label: props.data.button.title ??? props.data.button.label ??? '',
+} : null %}
+
+<div class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
+  <a class="{{ props.classes.skipMenu }}" href="#main">{{ 'translate.navigation.skipMenu' | t }}</a>
+  <nav class="{{ props.classes.inner }}">
+    <div class="{{ props.classes.bar }}">
+      <a href="{{ siteUrl }}" aria-label="{{ siteName }}" class="{{ props.classes.logo }}"
+        {% if craft.app.request.segments | length == 0 %} aria-current="page"{% endif %}>
+        <img src="/dist/images/bitmap/logo.png" alt="{{ siteName }}" width="412" height="306" class="{{ theme.logoImg }}">
       </a>
 
-      <button class="{{ props.classes.hamburger }}"
-              aria-controls="primary-navigation"
-              aria-expanded="false"
-              aria-disabled="false">
-        <span class="sr-only">{{ 'translate.navigation.menu'|t }}</span>
-        <span class="hamburger-menu" aria-hidden="true"></span>
-      </button>
-        <ul id="primary-navigation" class="{{ props.classes.navigationNodes }}">
-          {% nav node in props.data.nodes %}
-            <li>
-              {{ node.link }}
-              {% ifchildren %}
-                <ul>
-                  {% children %}
-                </ul>
-              {% endifchildren %}
-            </li>
-          {% endnav %}
-        </ul>
-    </nav>
-  </div>
-{% endif %}
+      <div class="{{ props.classes.rightCluster }}">
+        {% if hasNodes %}
+          <div id="primary-navigation" class="{{ props.classes.menu }}">
+            <ul class="{{ props.classes.menuList }}">
+              {% for node in props.data.nodes %}
+                <li>
+                  <a href="{{ node.url }}" class="{{ theme.menuLink }}">{{ node.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        {% if hasButton %}
+          <div class="{{ props.classes.ctaWrap }}">
+            {{ include('_components/linkButton/linkButton.twig', {
+              data: { link: buttonLink, linkStyle: theme.buttonStyle },
+            }, with_context = false) }}
+          </div>
+        {% endif %}
+
+        {% if hasNodes %}
+          <button class="{{ theme.hamburger }}"
+                  aria-controls="primary-navigation"
+                  aria-expanded="false"
+                  aria-disabled="false">
+            <span class="sr-only">{{ 'translate.navigation.menu' | t }}</span>
+            <span class="hamburger-menu" aria-hidden="true"></span>
+          </button>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</div>
