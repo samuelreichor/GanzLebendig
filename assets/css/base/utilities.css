@@ -1,0 +1,78 @@
+@utility no-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility outside-container {
+  padding-inline: var(--container-inset);
+}
+
+@utility container-gaps {
+  gap: var(--container-gap);
+}
+
+@utility container-grid {
+  gap: var(--container-gap);
+  @apply grid grid-cols-12 mx-auto;
+}
+
+@utility container {
+  max-width: var(--container-max-width);
+  width: 100%;
+  gap: var(--container-gap);
+  padding-inline: var(--container-margin-x);
+  @apply grid grid-cols-12 mx-auto;
+}
+
+@utility m-top-xs {
+  @apply mt-ds-8;
+}
+
+@utility m-top-sm {
+  @apply mt-ds-16;
+}
+
+@utility m-top-md {
+  @apply mt-ds-24;
+}
+
+@utility m-top-lg {
+  @apply mt-ds-32;
+}
+
+@utility p-top-xs {
+  @apply pt-ds-8;
+}
+
+@utility p-top-sm {
+  @apply pt-ds-16;
+}
+
+@utility p-top-md {
+  @apply pt-ds-24;
+}
+
+@utility p-top-lg {
+  @apply pt-ds-32;
+}
+
+@utility p-bottom-xs {
+  @apply pb-ds-8;
+}
+
+@utility p-bottom-sm {
+  @apply pb-ds-16;
+}
+
+@utility p-bottom-md {
+  @apply pb-ds-24;
+}
+
+@utility p-bottom-lg {
+  @apply pb-ds-32;
+}
+

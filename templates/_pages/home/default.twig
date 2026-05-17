@@ -1,19 +1,1 @@
 {% extends "_layouts/default.twig" %}
-{% set templatePath = _self ??? '' %}
-
-{% set classes = {
-} %}
-
-{% block hero %}
-{% endblock %}
-
-{% block content %}
-  {#TODO: Delete globalStyleOverview when everything is beautiful ;) #}
-  {{ include('_sections/globalStyleOverview/globalStyleOverview.twig', with_context = false) }}
-
-{#  {{ include('_contentBuilder/contentBuilder.twig', {
-    data: {
-      contentQuery: entry.contentBuilder ??? null,
-    },
-  }, with_context = false) }} #}
-{% endblock %}

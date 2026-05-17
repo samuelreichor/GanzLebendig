@@ -1,58 +1,73 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  section='hero',
-  data={
+{% set compDefaults = {
+  data: {
+    name: 's-hero',
     image: null,
     headline: '',
-    optional: {
-      text: null,
-      link: null,
-    }
+    text: '',
+    link: null,
   },
-  classes={
-    root: 'container',
-    textCol: 'col-span-full md:col-span-4 space-y-5',
-    imageCol: 'col-span-full md:col-start-6 md:col-end-13',
+  classes: {
+    root: 'container p-top-md p-bottom-md items-center',
+    custom: '',
+    contentCol: 'col-span-12 md:col-span-6 lg:col-span-5 flex flex-col gap-ds-4',
+    imageCol: 'col-span-12 md:col-span-6 lg:col-start-7 lg:col-end-13',
+    linkWrapper: 'mt-ds-2',
   },
-) %}
+} %}
 
-{% if props.data.image and props.data.headline %}
-  <header class="{{ props.classes.root }}">
-    {# ---- Left Column ---- #}
-    <div class="{{ props.classes.textCol }}">
-      {{ include('_components/headline/headline.twig', {
-        data: {
-          text: props.data.headline ??? '',
-          tag: 'h1',
-        },
-        variants: {
-          size: 'h1',
-        },
-      }, with_context = false) }}
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
 
-      {{ include('_components/text/text.twig', {
+{% if props.data.image or props.data.headline or props.data.text or props.data.link %}
+  <header class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
+    {% if props.data.headline or props.data.text or props.data.link %}
+      <div class="{{ props.classes.contentCol }}">
+        {% if props.data.headline %}
+          {{ include('_components/headline/headline.twig', {
+            data: {
+              text: props.data.headline,
+              variantSize: 'h1',
+              tag: 'h1',
+            },
+          }, with_context = false) }}
+        {% endif %}
+
+        {% if props.data.text %}
+          {{ include('_components/text/text.twig', {
+            data: {
+              text: props.data.text,
+              raw: true,
+            },
+          }, with_context = false) }}
+        {% endif %}
+
+        {% if props.data.link %}
+          <div class="{{ props.classes.linkWrapper }}">
+            {{ include('_components/linkButton/linkButton.twig', {
+              data: {
+                link: props.data.link,
+              },
+            }, with_context = false) }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if props.data.image %}
+      {{ include('_components/image/image.twig', {
         data: {
-          text: props.data.text ??? '',
+          image: props.data.image,
+          objectFit: 'cover',
+          transform: 'landscape',
+        },
+        classes: {
+          custom: props.classes.imageCol,
         }
       }, with_context = false) }}
-
-      {{ include('_components/linkButton/linkButton.twig', {
-        data: {
-          link: props.data.link ??? '',
-        }
-      }, with_context = false) }}
-    </div>
-
-    {# ---- Right Column ---- #}
-    {{ include('_components/image/image.twig', {
-      data: {
-        image: props.data.image ??? null,
-        objectFit: 'cover',
-        transform: 'landscape',
-      },
-      classes: {
-        root: props.classes.imageCol
-      }
-    }, with_context = false) }}
+    {% endif %}
   </header>
 {% endif %}

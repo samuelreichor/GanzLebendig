@@ -1,40 +1,34 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  component='text',
-  data={
+{% set compDefaults = {
+  data: {
+    name: 'c-text',
     text: '',
-    optional: {
-      tag: 'div',
-      raw: false,
-    }
+    tag: 'div',
+    theme: '',
+    raw: false,
+    size: 'large',
   },
-  variants={
-    size: ['base', 'large'],
-    theme: ['default', 'onBackground'],
-  },
-  classes={
+  classes: {
     root: 'c-text--richText',
+    custom: '',
+  },
+  variants: {
     size: {
-      base: {
-        root: 'text-base'
-      },
-      large: {
-        root: 'text-lg'
-      },
-    },
-    theme: {
-      default: {
-        root: 'text-current',
-      },
-      onBackground: {
-        root: 'text-white',
-      },
-    },
+      large: 'text-lg',
+      base: 'text-base',
+    }
   }
-) %}
+} %}
+
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+  variants: compDefaults.variants,
+} %}
 
 {% if props.data.text %}
-  <{{ props.data.tag }} class="{{ props.classes.root }}">
+  <{{ props.data.tag }} class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }} {{ props.data.theme == "onBackground" ? props.classes.onBackground }} {{ props.variants.size[props.data.size] }}">
     {{ props.data.raw ? props.data.text | raw : props.data.text }}
-  </{{ props.data.tag}}>
+  </{{ props.data.tag }}>
 {% endif %}

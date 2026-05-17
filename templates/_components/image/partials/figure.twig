@@ -1,25 +1,27 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  component='figure',
-  data={
-    image: {
-      type: 'asset',
-      about: 'A Craft image asset'
-    },
-    optional: {
-      showCaption: false,
-      dominantColor: false,
-      lazy: true,
-      transform: 'auto',
-      objectFit: '',
-    }
+{% set compDefaults = {
+  data: {
+    name: 'figure',
+    image: null,
+    dominantColor: null,
+    lazy: true,
+    transform: 'auto',
+    objectFit: '',
+    sizes: '100vw',
   },
-  classes={
+  classes: {
     root: '',
-  }
-) %}
+    custom: '',
+  },
+} %}
 
-<figure class="{{ props.classes.root }}">
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
+
+<figure class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
   {# ---- image ---- #}
   {{ include('_components/image/partials/image.twig', {
     data: {
@@ -28,6 +30,7 @@
       lazy: props.data.lazy,
       transform: props.data.transform,
       objectFit: props.data.objectFit,
+      sizes: props.data.sizes,
     }
   }, with_context = false) }}
 

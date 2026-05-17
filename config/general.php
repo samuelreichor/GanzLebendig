@@ -12,6 +12,7 @@ return [
   '*' => [
     'aliases' => [
       '@web' => getenv('PRIMARY_SITE_URL'),
+      '@webroot' => getenv('CRAFT_WEB_ROOT'),
     ],
     'allowAdminChanges' => false,
     'allowedFileExtensions' => ['jpg', 'png', 'jpeg', 'webP', 'gif', 'svg', 'mp4', 'pdf', 'zip', 'csv'],

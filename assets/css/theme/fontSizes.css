@@ -1,0 +1,33 @@
+@plugin './plugins/modularScaling.js';
+
+@theme {
+  --text-*: initial;
+  --text-xs: var(--font-size-xs);
+  --text-xs--line-height: 1.5;
+  --text-sm: var(--font-size-sm);
+  --text-sm--line-height: 1.35;
+  --text-base: var(--font-size-base);
+  --text-base--line-height: 1.4;
+  --text-lg: var(--font-size-lg);
+  --text-lg--line-height: 1.4;
+  --text-xl: var(--font-size-xl);
+  --text-xl--line-height: 1.35;
+  --text-2xl: var(--font-size-2xl);
+  --text-2xl--line-height: 1.25;
+  --text-3xl: var(--font-size-3xl);
+  --text-3xl--line-height: 1.25;
+  --text-4xl: var(--font-size-4xl);
+  --text-4xl--line-height: 1.20;
+  --text-5xl: var(--font-size-5xl);
+  --text-5xl--line-height: 1.20;
+  --text-6xl: var(--font-size-6xl);
+  --text-6xl--line-height: 1.1;
+  --text-7xl: var(--font-size-7xl);
+  --text-7xl--line-height: 1.1;
+  --text-8xl: var(--font-size-8xl);
+  --text-8xl--line-height: 1;
+  --text-9xl: var(--font-size-9xl);
+  --text-9xl--line-height: 1;
+  --text-10xl: var(--font-size-10xl);
+  --text-10xl--line-height: 1;
+}

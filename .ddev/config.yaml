@@ -1,4 +1,4 @@
-name: project-template
+name: ganzlebendig
 type: craftcms
 docroot: web
 php_version: '8.3'
@@ -9,12 +9,14 @@ xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
 database:
-  type: mariadb
-  version: '10.5'
+  type: mysql
+  version: "8.0"
 use_dns_when_possible: true
 composer_version: '2'
 web_environment: []
 nodejs_version: '20'
+disable_settings_management: true
+
 # Key features of DDEV's config.yaml:
 
 # name: <projectname> # Name of the project, automatically provides

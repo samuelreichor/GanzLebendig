@@ -1,0 +1,119 @@
+columnSuffix: null
+handle: hero
+instructions: null
+name: Hero
+searchable: false
+settings:
+  fieldLayouts:
+    __assoc__:
+      -
+        - cebaab55-6194-45d4-9442-1cdb78be4274
+        -
+          __assoc__:
+            0:
+              - tabs
+              -
+                -
+                  __assoc__:
+                    0:
+                      - name
+                      - Inhalt
+                    1:
+                      - uid
+                      - eb29ef24-58a9-4c3f-9610-a9f4da6a2024
+                    4:
+                      - elements
+                      -
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - headline
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2026-05-17T16:17:57+00:00'
+                            9:
+                              - uid
+                              - 47495bab-828f-4f46-8325-41cef0b74973
+                            12:
+                              - fieldUid
+                              - 93116f68-b0f3-4e73-818b-9d4c0a2d4b57 # Headline
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - text
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2026-05-17T16:17:57+00:00'
+                            9:
+                              - uid
+                              - c77e2159-16e5-4178-b171-57d89dc64767
+                            12:
+                              - fieldUid
+                              - a536dc09-ff34-40c6-9e0f-ab3cc3f4ce8e # Text
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2026-05-17T16:25:12+00:00'
+                            9:
+                              - uid
+                              - 61a279bd-1b8d-4a63-a871-c5e1c0e38fc6
+                            12:
+                              - fieldUid
+                              - 648c0fe1-b09f-4f06-ae84-374277216c64 # Link
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2026-05-17T16:17:57+00:00'
+                            9:
+                              - uid
+                              - ff5f5b79-02d1-45bd-9300-7f766f9db2ff
+                            12:
+                              - fieldUid
+                              - 31453c43-6490-4c7f-ae24-da061e930401 # Image
+            4:
+              - cardThumbAlignment
+              - end
+  viewMode: grouped
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\ContentBlock

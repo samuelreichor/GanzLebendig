@@ -1,0 +1,21 @@
+:root {
+  --container-gap: 1rem;
+  --container-margin-x: 1rem;
+  --container-max-width: 99999px;
+  --grid-cols: 12;
+  --viewport-width: 100vw;
+  --max-width-text: 800px;
+  --col-base: calc(
+    (min(var(--viewport-width), var(--container-max-width)) - (2 * var(--container-margin-x)) - (var(--grid-cols) - 1) * var(--container-gap)) /
+    var(--grid-cols)
+  );
+  --container-inset: calc(max(0px, (var(--viewport-width) - var(--container-max-width)) / 2) + var(--container-margin-x));
+
+  @variant md {
+    --container-margin-x: 2rem;
+  }
+
+  @variant lg {
+    --container-max-width: var(--breakpoint-2xl);
+  }
+}

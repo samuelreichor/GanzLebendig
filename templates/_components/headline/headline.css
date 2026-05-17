@@ -1,0 +1,47 @@
+.c-text--richText,
+.headline-root {
+  font-style: normal;
+  max-width: var(--max-width-text);
+
+  h1,
+  &.h1-styling {
+    font-size: var(--text-7xl);
+    line-height: var(--text-7xl--line-height);
+    font-weight: 400;
+  }
+
+  h2,
+  &.h2-styling {
+    font-size: var(--text-6xl);
+    line-height: var(--text-6xl--line-height);
+    font-weight: 400;
+  }
+
+  h3,
+  &.h3-styling {
+    font-size: var(--text-4xl);
+    line-height: var(--text-4xl--line-height);
+    font-weight: 400;
+  }
+
+  h4,
+  &.h4-styling {
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
+    font-weight: 400;
+  }
+
+  h5,
+  &.h5-styling {
+    font-size: var(--text-lg);
+    line-height: var(--text-lg--line-height);
+    font-weight: 400;
+  }
+
+  h6,
+  &.h6-styling {
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    font-weight: 500;
+  }
+}

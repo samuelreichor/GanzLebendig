@@ -1,62 +1,37 @@
-{# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  component='headline',
-  data={
-    text: '',
-    optional: {
-      size: 'h2',
-      tag: 'h2',
-      raw: false,
-      nl2br: false,
-    }
+{# >>> Comp Defaults #}
+{% set compDefaults = {
+  data: {
+    name: 'c-headline',
+    text: null,
+    variantSize: 'h2',
+    tag: 'h2',
   },
-  variants={
-    size: ['h2', 'h1', 'h3', 'h4', 'h5', 'h6'],
-    theme: ['default', 'onBackground'],
-  },
-  classes={
+  classes: {
     root: 'headline-root',
+    custom: '',
+  },
+  variants: {
     size: {
-      h1: {
-        root: 'h1-styling'
-      },
-      h2: {
-        root: 'h2-styling'
-      },
-      h3: {
-        root: 'h3-styling'
-      },
-      h4: {
-        root: 'h4-styling'
-      },
-      h5: {
-        root: 'h5-styling'
-      },
-      h6: {
-        root: 'h6-styling'
-      },
-    },
-    theme: {
-      default: {
-        root: 'text-current',
-      },
-      onBackground: {
-        root: 'text-white',
-      },
+      h1: 'h1-styling',
+      h2: 'h2-styling',
+      h3: 'h3-styling',
+      h4: 'h4-styling',
+      h5: 'h5-styling',
+      h6: 'h6-styling',
     },
   }
-) %}
+} %}
+
+
+{# >>> Merge data / classes / variants (optional) #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+  variants: compDefaults.variants,
+} %}
 
 {% if props.data.text %}
-  <{{ props.data.tag }} class="{{ props.classes.root }}">
-    {% if props.data.raw and props.data.nl2br %}
-      {{ props.data.text | raw | nl2br }}
-    {% elseif props.data.raw %}
-      {{ props.data.text | raw }}
-    {% elseif props.data.nl2br %}
-      {{ props.data.text | nl2br }}
-    {% else %}
-      {{ props.data.text }}
-    {% endif %}
-  </{{ props.data.tag}}>
+  <{{ props.data.tag }} class="{{ props.data.name }} {{ props.classes.root }} {{ props.variants.size[props.data.variantSize] }} {{ props.classes.custom }} ">
+    {{ props.data.text | raw }}
+  </{{ props.data.tag }}>
 {% endif %}

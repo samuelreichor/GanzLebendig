@@ -1,4 +1,4 @@
-import type { IComponent } from '@assets/js/@types/Component';
+import { IComponent } from '@assets/js/@types/Component';
 
 interface NavigationComponent extends IComponent {
   openNavigation(): void;

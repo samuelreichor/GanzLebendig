@@ -1,20 +1,27 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  component='navigation',
-  data={
+{% set compDefaults = {
+  data: {
+    name: 'c-navigation',
     nodes: null,
   },
-  classes={
-    root: 'js-navigation container bg-black text-white',
+  classes: {
+    root: 'js-navigation container bg-primary',
+    custom: '',
     skipMenu: 'focus:translate-y-0 -translate-y-full absolute inset-x-0 h-full flex justify-center items-center bg-white text-black font-bold text-base z-50 opacity-90',
     navigation: 'col-span-full flex justify-between items-center',
     hamburger: 'js-hamburger hamburger block absolute right-4 top-0 bottom-0 my-auto w-6 h-6 md:hidden',
     navigationNodes: 'navigation-nodes hidden md:flex md:gap-4',
-  }
-) %}
+  },
+} %}
+
+{# >>> Merge data / classes / variansts (optional) #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
 
 {% if props.data.nodes %}
-  <div class="{{ props.classes.root }}">
+  <div class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
     <a class="{{ props.classes.skipMenu }}" href="#main">{{ 'translate.navigation.skipMenu' | t }}</a>
     <nav class="{{ props.classes.navigation }}">
       {% set ariaLabelLogo = seomatic.site.siteName ~ ' | ' ~ craft.entries.section('home').one().title %}

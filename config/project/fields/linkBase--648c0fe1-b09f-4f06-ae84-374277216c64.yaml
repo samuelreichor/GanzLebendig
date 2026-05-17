@@ -1,0 +1,49 @@
+columnSuffix: null
+handle: linkBase
+instructions: null
+name: Link
+searchable: false
+settings:
+  advancedFields:
+    - target
+  fullGraphqlData: false
+  maxLength: 255
+  showLabelField: true
+  typeSettings:
+    __assoc__:
+      -
+        - entry
+        -
+          __assoc__:
+            -
+              - sources
+              -
+                - singles
+                - 'section:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+            -
+              - showUnpermittedSections
+              - '1'
+            -
+              - showUnpermittedEntries
+              - '1'
+      -
+        - url
+        -
+          __assoc__:
+            -
+              - allowRootRelativeUrls
+              - ''
+            -
+              - allowAnchors
+              - '1'
+            -
+              - allowCustomSchemes
+              - ''
+  types:
+    - entry
+    - email
+    - tel
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Link

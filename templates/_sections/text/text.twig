@@ -1,35 +1,31 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  section='text',
-  data={
+{% set compDefaults = {
+  data: {
+    name: 's-text',
     text: '',
-    optional: {
-      textTag: 'div',
-      textRaw: false,
-      textTheme: 'default',
-      textSize: 'base',
-    }
   },
-  classes={
-    root: 'container',
-  }
-) %}
+  classes: {
+    root: 'container m-top-md',
+    custom: '',
+  },
+} %}
+
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
 
 {% if props.data.text %}
-  <div class="{{ props.classes.root }}">
+  <div class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
     {{ include('_components/text/text.twig', {
       data: {
         text: props.data.text,
-        tag: props.data.textTag,
-        raw: props.data.textRaw,
-      },
-      variants: {
-        size: props.data.textSize,
-        theme: props.data.textTheme,
+        raw: true,
       },
       classes: {
-        root: 'col-span-full',
-      },
+        custom: 'col-span-full',
+      }
     }, with_context = false) }}
   </div>
 {% endif %}

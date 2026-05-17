@@ -1,0 +1,103 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  ce4128b9-711f-48ae-8d2a-8431ee6c5030:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-09-13T10:29:37+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 3b793b36-1ec1-4058-9ad1-0fd005c6d56d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-09-13T10:29:37+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 17c8d2a4-6d54-4830-b54d-8f483c3d68cb
+            userCondition: null
+          -
+            dateAdded: '2026-05-17T16:18:41+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: a6d3a7d3-cc5d-4f53-8e0d-97c620aab63e # Hero
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7edaa46f-88d6-4fea-a97e-ca6cae6b2551
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-09-13T10:29:37+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 4dd04e04-57bd-419e-9140-eed8d9ccee69
+            userCondition: null
+          -
+            dateAdded: '2024-09-13T10:29:37+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: b39b7964-2e04-4b00-92ee-c163a563b62b # Content
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: aa4bb267-d870-45d3-aa72-c6f44af9023e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 51833e04-185b-45c1-8350-840c922d3777
+        userCondition: null
+      -
+        elementCondition: null
+        name: SEO
+        uid: 31f5ef0c-e210-4fea-aaef-a4b2c7aec3e8
+        userCondition: null
+    thumbFieldKey: null
+handle: pagebuilder
+hasTitleField: true
+icon: null
+name: Pagebuilder
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

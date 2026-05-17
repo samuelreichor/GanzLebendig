@@ -1,0 +1,126 @@
+@theme {
+  --ds-1: 0.25rem;
+  --ds-2: 0.5rem;
+  --ds-3: 0.75rem;
+  --ds-4: 1rem;
+  --ds-6: 1.25rem;
+  --ds-8: 1.5rem;
+  --ds-10: 2rem;
+  --ds-12: 2.5rem;
+  --ds-16: 3rem;
+  --ds-20: 3.5rem;
+  --ds-24: 4rem;
+  --ds-28: 4.5rem;
+  --ds-32: 5rem;
+  --ds-40: 5.5rem;
+  --ds-48: 6rem;
+  --ds-56: 6.5rem;
+  --ds-64: 7rem;
+}
+
+@variant lg {
+  :root {
+    --ds-6: 1.5rem;
+    --ds-8: 2rem;
+    --ds-10: 2.5rem;
+    --ds-12: 3rem;
+    --ds-16: 4rem;
+    --ds-20: 5rem;
+    --ds-24: 6rem;
+    --ds-28: 7rem;
+    --ds-32: 8rem;
+    --ds-40: 10rem;
+    --ds-48: 12rem;
+    --ds-56: 14rem;
+    --ds-64: 16rem;
+  }
+}
+
+@utility m-ds-* {
+  margin: --value(--ds-*);
+}
+@utility mt-ds-* {
+  margin-top: --value(--ds-*);
+}
+@utility mr-ds-* {
+  margin-right: --value(--ds-*);
+}
+@utility mb-ds-* {
+  margin-bottom: --value(--ds-*);
+}
+@utility ml-ds-* {
+  margin-left: --value(--ds-*);
+}
+@utility mx-ds-* {
+  margin-left: --value(--ds-*);
+  margin-right: --value(--ds-*);
+}
+@utility my-ds-* {
+  margin-top: --value(--ds-*);
+  margin-bottom: --value(--ds-*);
+}
+
+@utility p-ds-* {
+  padding: --value(--ds-*);
+}
+@utility pt-ds-* {
+  padding-top: --value(--ds-*);
+}
+@utility pr-ds-* {
+  padding-right: --value(--ds-*);
+}
+@utility pb-ds-* {
+  padding-bottom: --value(--ds-*);
+}
+@utility pl-ds-* {
+  padding-left: --value(--ds-*);
+}
+@utility px-ds-* {
+  padding-left: --value(--ds-*);
+  padding-right: --value(--ds-*);
+}
+@utility py-ds-* {
+  padding-top: --value(--ds-*);
+  padding-bottom: --value(--ds-*);
+}
+
+@utility gap-ds-* {
+  gap: --value(--ds-*);
+}
+@utility gap-x-ds-* {
+  column-gap: --value(--ds-*);
+}
+@utility gap-y-ds-* {
+  row-gap: --value(--ds-*);
+}
+
+@utility space-y-ds-* {
+  & > :not(:last-child) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(--value(--ds-*) * var(--tw-space-y-reverse));
+    margin-block-end: calc(--value(--ds-*) * calc(1 - var(--tw-space-y-reverse)));
+  };
+}
+
+@utility space-x-ds-* {
+  & > :not(:last-child) {
+    --tw-space-x-reverse: 0;
+    margin-inline-start: calc(--value(--ds-*) * var(--tw-space-x-reverse));
+    margin-inline-end: calc(--value(--ds-*) * calc(1 - var(--tw-space-x-reverse)));
+  };
+}
+
+@utility top-ds-* {
+  top: --value(--ds-*);
+}
+@utility left-ds-* {
+  left: --value(--ds-*);
+}
+@utility right-ds-* {
+  right: --value(--ds-*);
+}
+@utility bottom-ds-* {
+  bottom: --value(--ds-*);
+}
+
+

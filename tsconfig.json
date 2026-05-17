@@ -29,7 +29,7 @@
 
     // Project Settings
     "outDir": "./web/dist",
-    "lib": ["DOM", "DOM.Iterable"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "paths": {
       "@assets/*": ["assets/*"],
       "@templates/*": ["templates/*"]

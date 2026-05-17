@@ -1,39 +1,37 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  component='image',
-  data={
-    image: {
-      type: 'asset',
-      about: 'A Craft image asset'
-    },
-    optional: {
-      showCaption: false,
-      dominantColor: false,
-      lazy: true,
-      transform: 'auto',
-      objectFit: '',
-    }
+{% set compDefaults = {
+  data: {
+    image: null,
+    showCaption: false,
+    dominantColor: null,
+    lazy: true,
+    transform: 'auto',
+    objectFit: '',
+    sizes: '100vw',
   },
-  classes={
+  classes: {
     root: '',
-  }
-) %}
+    custom: '',
+  },
+} %}
+
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
 
 {% if props.data.image %}
-  {% if props.data.showCaption and props.data.image.caption %}
+  {% if props.data.showCaption and props.data.image.caption %} {# use <figure> if a caption should be shown #}
     {{ include('_components/image/partials/figure.twig', {
       data: props.data,
-      classes: {
-        root: props.classes.root
-      }
+      classes: props.classes,
     }, with_context = false) }}
 
-  {% else %}
+  {% else %} {# use only <picture>/<img> if there is no caption #}
     {{ include('_components/image/partials/image.twig', {
       data: props.data,
-      classes: {
-        root: props.classes.root
-      }
+      classes: props.classes,
     }, with_context = false) }}
   {% endif %}
 {% endif %}

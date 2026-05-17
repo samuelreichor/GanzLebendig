@@ -1,0 +1,7 @@
+@theme {
+  --color-*: initial;
+  --color-transparent: 'transparent';
+  --color-white: #fff;
+  --color-black: #000;
+  --color-primary: #342
+}

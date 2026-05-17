@@ -2,25 +2,21 @@
 
 {% block body %}
   {% block navigation %}
-    {% set nodes = craft.navigation.nodes().level(1).with(['children']).all() %}
-    {% if nodes %}
-      {{ include('_components/navigation/navigation.twig', {
-        data: {
-          nodes: nodes ??? null,
-        },
-      }, with_context = false) }}
-    {% endif %}
+    {{ include('_components/navigation/navigation.twig', {
+      data: {
+        nodes: [],
+      },
+    }, with_context = false) }}
   {% endblock %}
 
   <main id="main">
     {% block hero %}
-      {% set hero = entry.hero.eagerly().one() %}
       {{ include('_sections/hero/hero.twig', {
         data: {
-          image: hero.image.eagerly().one() ??? null,
-          headline: hero.searchablePlainText ??? '',
-          text: hero.searchableRichText ??? null,
-          link: hero.linkBlock.eagerly().one() ??? null,
+          image: entry.hero.image.eagerly().one() ??? null,
+          headline: entry.hero.headline ??? '',
+          text: entry.hero.text ??? '',
+          link: entry.hero.linkBase ??? null,
         },
       }, with_context = false) }}
     {% endblock %}

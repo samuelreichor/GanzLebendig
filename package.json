@@ -5,53 +5,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "ddev start && ddev launch && npm run dev",
-    "build": "vite build && npm run build:cp",
-    "build:cp": "npx tailwindcss -c ./tailwind.config.js -i ./assets/css/cp.pcss -o ./web/dist/assets/cp.css --postcss",
-    "dev:cp": "npx tailwindcss -c ./tailwind.config.js -i ./assets/css/cp.pcss -o ./web/dist/assets/cp.css --watch --postcss",
-    "prepare": "husky",
-    "lint": "npm run lint:lint && npm run lint:format",
-    "lint:lint": "eslint './assets/**/*.{js,ts,vue}' './templates/**/*.{js,ts,vue}' --fix --no-error-on-unmatched-pattern",
-    "lint:format": "prettier './assets/**/*.{js,ts,vue}' './templates/**/*.{js,ts,vue}' --write",
-    "convert-translations": "node ./assets/js/helpers/translation-parser.js"
-  },
-  "author": {
-    "email": "admin@fredmansky.at",
-    "name": "Fredmansky",
-    "url": "https://fredmansky.at/"
+    "build": "vite build"
   },
   "dependencies": {
-    "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
-    "core-js": "3.36.1",
-    "lazysizes": "5.3.2",
-    "php-parser": "^3.2.1",
-    "rollup-plugin-critical": "1.0.14"
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@tailwindcss/vite": "^4.3.0",
+    "lazysizes": "^5.3.2",
+    "mitt": "^3.0.1",
+    "tailwindcss": "^4.3.0",
+    "vite-plugin-dynamic-import": "^1.6.0",
+    "vite-plugin-restart": "^2.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.1.0",
-    "@eslint/js": "9.14.0",
-    "@rollup/plugin-node-resolve": "15.3.0",
-    "@types/node": "22.9.0",
-    "@typescript-eslint/eslint-plugin": "8.14.0",
-    "@typescript-eslint/parser": "8.14.0",
-    "@vitejs/plugin-legacy": "5.4.3",
-    "autoprefixer": "10.4.20",
-    "eslint": "9.14.0",
-    "eslint-plugin-vue": "9.31.0",
-    "globals": "15.12.0",
-    "husky": "9.1.6",
-    "lint-staged": "15.2.10",
-    "postcss": "8.4.49",
-    "postcss-import": "16.1.0",
-    "postcss-nested": "7.0.2",
-    "prettier": "3.3.3",
-    "tailwindcss": "3.4.14",
-    "typescript": "5.6.3",
-    "vite": "5.4.11",
-    "vite-plugin-dynamic-import": "1.6.0",
-    "vite-plugin-mkcert": "1.17.6",
-    "vite-plugin-restart": "0.4.1",
-    "vue-eslint-parser": "9.4.3"
+    "vite": "^7",
+    "vite-plugin-mkcert": "^1.17.8"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.9.5"
@@ -79,11 +46,6 @@
       "> 1%",
       "last 2 versions",
       "Firefox ESR"
-    ]
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue,ts}": [
-      "npm run lint"
     ]
   }
 }

@@ -1,7 +1,7 @@
 defaultPlacement: end
 enableVersioning: true
 entryTypes:
-  - 4029eccd-d1d9-4076-81f9-58f315a363f2 # Entry: Default
+  - 4029eccd-d1d9-4076-81f9-58f315a363f2 # Pagebuilder
 handle: home
 maxAuthors: 1
 name: Home

@@ -1,41 +1,36 @@
-{# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  component='icon',
-  data={
-    name: {
-      type: 'string',
-      about: 'The name of the icon without the .svg',
-    },
-    optional: {
-      attributes: {
-        about: 'There you can set attributes, in a key value pair',
-        default: [],
-      },
-    }
+{# >>> Comp Defaults #}
+{% set compDefaults = {
+  data: {
+    name: 'c-icon',
+    icon: '',
+    variant: 'base',
+    attributes: {},
   },
-  variants={
-    size: ['base', 'auto', 'small', 'xl'],
-  },
-  classes={
+  classes: {
     root: 'inline-flex origin-center',
+    custom: '',
+    color: '',
+    hoverEffect: '',
+  },
+  variants: {
     size: {
-      base:{
-        root: 'w-6 h-6',
-      },
-      auto:{
-        root: '',
-      },
-      small:{
-        root: 'w-4 h-4',
-      },
-      xl:{
-        root: 'w-12 h-12',
-      },
-    },
+      auto: '',
+      small: 'w-5 h-5',
+      base: 'w-6 h-6',
+      xl: 'w-12 h-12',
+    }
   }
-) %}
+} %}
 
-{% if props.data.name %}
-  {{ svg("@webroot/dist/images/svg/" ~ props.data.name ~ ".svg")|attr(props.data.attributes|merge({
-    class: props.classes.root })) }}
+{# >>> Merge data / classes / variants (optional) #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data|merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes|merge(classes) : compDefaults.classes,
+  variants: compDefaults.variants
+} %}
+
+{% if props.data.icon %}
+  {{ svg("@webroot/dist/images/svg/" ~ props.data.icon ~ ".svg")|attr(props.data.attributes|merge({
+    class: props.data.name ~ " " ~ props.classes.root ~ " " ~ props.variants.size[props.data.variant] ??? ''
+    ~ " " ~ props.classes.color ~ " " ~ props.classes.hoverEffect ~ " " ~  props.classes.custom  })) }}
 {% endif %}

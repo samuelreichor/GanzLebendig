@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+@import './theme/theme.css';
+@import './base/utilities.css';
+@import './base/global-vars.css';
+@import './base/global.css';
+
+/* Global Components */
+@import '@templates/_components/text/text.css';
+@import '@templates/_components/headline/headline.css';
+

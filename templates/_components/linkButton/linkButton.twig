@@ -1,93 +1,55 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  component='linkButton',
-  data={
-    link: {
-      type: ['?Entry', 'map'],
-      about: 'Map format: {url=string, text=string, target=bool}'
-    },
-    optional: {
-      tag: 'a',
-      additionalAttrs: {
-        about: 'Set additional attributes as an array of key value pairs [{key: value},...]',
-        default: null,
-      },
-    }
+{% set compDefaults = {
+  data: {
+    name: 'c-link',
+    link: null,
+    linkStyle: 'primary',
+    tag: 'a',
+    align: 'left',
   },
-  variants={
-    style: {
-      options: ['primary','secondary', 'link'],
-      default: _context.data.link.linkVariant.value ??? 'primary',
-    },
-    align: ['left', 'center', 'right'],
+  classes: {
+    root: 'relative inline-block transition duration-300 ease-out hover:ease-in rounded',
+    custom: '',
   },
-  classes={
-    root: '',
-    variantStyle: 'relative inline-block transition duration-300 ease-out hover:ease-in rounded',
-    size: '',
+  variants: {
     style: {
-      primary:{
-        variantStyle: 'bg-black hover:bg-white text-white hover:text-black border-black border-2',
-        size: 'py-3 px-6',
-      },
-      secondary: {
-        variantStyle: 'hover:bg-black text-black hover:text-white border-black border-2',
-        size: 'py-3 px-6',
-      },
-      link: {
-        variantStyle: 'underline hover:text-error',
-      },
+      primary: 'bg-black hover:bg-white text-white hover:text-black border-black border-2',
+      link: 'underline hover:text-error',
+    },
+    size: {
+      base: 'py-3 px-6',
+      link: '',
+      big: '',
     },
     align: {
-      left: {
-        root: 'text-left',
-      },
-      center: {
-        root: 'text-center',
-      },
-      right: {
-        root: 'text-right',
-      },
+      left: 'text-left',
+      center: 'text-center',
+      right: 'text-right',
     }
   }
-) %}
+} %}
 
-{# -- Set the Link Data -- #}
-{% set linkUrl = props.data.link.url ??? props.data.link.linkUrl.value ??? '' %}
-{% set linkText = props.data.link.text ??? props.data.link.searchableLinkText ??? '' %}
-{% set linkTarget = props.data.link.target ??? props.data.link.openInNewTab ??? false %}
+{# >>> Merge data / classes / variants (optional) #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+  variants: compDefaults.variants,
+} %}
 
-{% if linkUrl and linkText %}
-  {# -- Set the Tag -- #}
-  {% set tag = props.data.tag %}
+{# -- Read native Craft 5 Link field props -- #}
+{% set linkUrl = props.data.link.url ??? '' %}
+{% set linkText = props.data.link.label ??? '' %}
+{% set linkTarget = props.data.link.target ??? '' %}
 
-  {# -- Merge all attributes -- #}
-  {% set attrArr = [] %}
+{# -- Set the Tag -- #}
+{% set tag = props.data.tag %}
 
-  {# Merge href #}
-  {% if tag == 'a' %}
-    {% set href = 'href="' ~ linkUrl ~ '"' %}
-    {% set attrArr = attrArr|merge([href]) %}
-
-    {# Merge target #}
-    {% if linkTarget %}
-      {% set target = 'target="_blank"' %}
-      {% set attrArr = attrArr|merge([target]) %}
-    {% endif %}
-  {% endif %}
-
-  {# Merge all other attributes #}
-  {% if props.data.additionalAttrs %}
-    {% for k, v in props.data.additionalAttrs %}
-      {% set attr = k ~ '="' ~ v ~ '"' %}
-      {% set attrArr = attrArr|merge([attr]) %}
-    {% endfor %}
-  {% endif %}
-
-<div class="{{ props.classes.root }}">
-  <{{ tag }} class="{{ props.classes.variantStyle }} {{ props.classes.size }}
-  " {% for attr in attrArr %}{{ attr|raw }} {% endfor %}>
-  {{ linkText }}
-  </{{ tag }}>
+{% if linkText and linkUrl %}
+  <div class="{{ props.data.name }} {{ props.variants.align[props.data.align] }} {{ props.classes.custom }}">
+    <{{ tag }} href="{{ linkUrl }}"{% if linkTarget %} target="{{ linkTarget }}"{% endif %}
+    class="{{ props.classes.root }} {{ props.variants.align[props.data.align] }} {{ props.variants.style[props.data.linkStyle] }} {{ props.data.linkStyle == 'link' ? props.variants.size.link : props.variants.size.base }}
+    ">
+    {{ linkText }}
+    </{{ tag }}>
   </div>
 {% endif %}

@@ -1,70 +1,70 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  section='imageAndText',
-  data={
+{% set compDefaults = {
+  data: {
+    name: 's-imageAndText',
     image: null,
+    showCaption: false,
     text: '',
-    optional: {
-      showCaption: false,
-      link: null,
-      imageRatio: 'landscape',
-    },
+    switched: false,
+    imageRatio: 'square',
+    link: null,
   },
-  variants={
-    switched: ['false', 'true'],
+  classes: {
+    root: 'container m-top-md items-center',
+    custom: '',
+    textCol: 'col-span-12 md:col-span-6 flex flex-col gap-ds-4',
+    imageCol: 'col-span-12 md:col-span-6',
+    textRoot: 'md:text-lg',
+    linkWrapper: 'mt-ds-2',
   },
-  classes={
-    root: 'container flex flex-wrap md:flex-nowrap gap-x-4 mx-auto',
-    textWrapper: 'w-full md:w-1/2',
-    text: 'md:text-lg',
-    imageWrapper: 'w-full md:w-1/2',
-    image: 'w-full h-full',
-    buttonWrapper: 'mt-2',
-    switched: {
-      true: {
-        textWrapper: 'order-last',
-        imageWrapper: 'order-first',
-      }
-    }
-  }
-) %}
+} %}
 
-{% if props.data.text and props.data.image %}
-  <div class="{{ props.classes.root }}">
-    <div class="{{ props.classes.textWrapper }}">
-      {{ include('_components/text/text.twig', {
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
+
+{% if props.data.text or props.data.image %}
+  <section class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
+    {% if props.data.text or props.data.link %}
+      <div class="{{ props.classes.textCol }} {{ props.data.switched ? 'md:order-2' : 'md:order-1' }}">
+        {% if props.data.text %}
+          {{ include('_components/text/text.twig', {
+            data: {
+              text: props.data.text,
+              raw: true,
+            },
+            classes: {
+              custom: props.classes.textRoot,
+            }
+          }, with_context = false) }}
+        {% endif %}
+
+        {% if props.data.link %}
+          <div class="{{ props.classes.linkWrapper }}">
+            {{ include('_components/linkButton/linkButton.twig', {
+              data: {
+                link: props.data.link,
+              }
+            }, with_context = false) }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if props.data.image %}
+      {{ include('_components/image/image.twig', {
         data: {
-          text: props.data.text,
+          image: props.data.image,
+          transform: props.data.imageRatio,
+          objectFit: 'cover',
+          showCaption: props.data.showCaption,
         },
         classes: {
-          custom: props.classes.text,
+          custom: props.classes.imageCol ~ ' ' ~ (props.data.switched ? 'md:order-1' : 'md:order-2'),
         }
       }, with_context = false) }}
-
-      {% if props.data.link %}
-        <div class="{{ props.classes.buttonWrapper }}">
-          {{ include('_components/linkButton/linkButton.twig', {
-            data: {
-              link: props.data.link,
-            },
-          }, with_context = false) }}
-        </div>
-      {% endif %}
-    </div>
-    <div class="{{ props.classes.imageWrapper }}">
-      {% if props.data.image ??? null %}
-        {{ include('_components/image/image.twig', {
-          data: {
-            image: props.data.image,
-            transform: props.data.imageRatio,
-            objectFit: 'cover',
-            showCaption: props.data.showCaption,
-          },
-          classes: {
-            custom: props.classes.image,
-          }
-        }, with_context = false) }}
-      {% endif %}
-    </div>
-  </div>
+    {% endif %}
+  </section>
 {% endif %}

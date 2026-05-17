@@ -1,16 +1,23 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  component='caption',
-  data={
-    text: ''
+{% set compDefaults = {
+  data: {
+    name: 'caption',
+    text: '',
   },
-  classes={
+  classes: {
     root: '',
-  }
-) %}
+    custom: '',
+  },
+} %}
+
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
 
 {% if props.data.text %}
-  <caption class="{{ props.classes.root }}">
+  <caption class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
     {{ include('_components/text/text.twig', {
       data: {
         text: props.data.text,

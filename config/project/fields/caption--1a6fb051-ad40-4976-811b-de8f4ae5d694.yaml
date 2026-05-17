@@ -7,7 +7,7 @@ settings:
   availableTransforms: ''
   availableVolumes:
     - 5cce6b80-a35c-4207-82e0-3940c9091376 # Images
-    - c5b55746-9b95-40a4-9e04-178618e02cff # Graphics
+    - c5b55746-9b95-40a4-9e04-178618e02cff
     - f39c88c2-b6fe-4cd9-adb5-17e58f0ebcb8 # Files
   ckeConfig: 6ae0efee-76bc-45ec-9f5c-d0e2f54d8ef0 # Default
   createButtonLabel: null

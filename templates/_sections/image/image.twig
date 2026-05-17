@@ -1,29 +1,32 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  section='image',
-  data={
+{% set compDefaults = {
+  data: {
+    name: 's-image',
     image: null,
-    optional: {
-      showCaption: false,
-      transform: 'auto',
-      objectFit: '',
-    }
+    showCaption: false,
   },
-  classes={
-    root: 'container',
-  }
-) %}
+  classes: {
+    root: 'container m-top-md',
+    custom: '',
+  },
+} %}
+
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
 
 {% if props.data.image %}
-  <div class="{{ props.classes.root }}">
+  <div class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
     {{ include('_components/image/image.twig', {
       data: {
         image: props.data.image,
-        transform: props.data.transform,
+        transform: 'auto',
         showCaption: props.data.showCaption,
       },
       classes: {
-        root: 'col-span-full',
+        custom: 'col-span-full',
       }
     }, with_context = false) }}
   </div>

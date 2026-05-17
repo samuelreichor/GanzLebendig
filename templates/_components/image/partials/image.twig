@@ -1,44 +1,94 @@
 {# >>> Comp Settings #}
-{% set props = defineProps(_context,
-  component='image',
-  data={
-    image: {
-      type: 'asset',
-      about: 'A Craft image asset'
-    },
-    optional: {
-      showCaption: false,
-      dominantColor: false,
-      lazy: true,
-      transform: 'auto',
-      objectFit: '',
-    }
+{% set compDefaults = {
+  data: {
+    name: 'image',
+    image: null,
+    dominantColor: null,
+    lazy: true,
+    transform: 'auto',
+    objectFit: '',
+    sizes: '100vw',
   },
-  classes={
+  classes: {
     root: '',
-  }
-) %}
+    custom: '',
+  },
+} %}
 
-{% import '_macros/_macro-imageHelper.twig' as imageHelper %}
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
 
 {% set image = props.data.image %}
 
-{% if imageHelper.isTransformable(image) %} {# use <picture> if the image is jpg or png and image transforms are created #}
-  {% set transformedImages = craft.imager.transformImage(image, props.data.transform) %}
-  {% set transformedImage = transformedImages|last %}
-  {% set placeholder = imageHelper.getPlaceHolder(image, transformedImage.width, transformedImage.height, props.data.dominantColor) %}
-  <picture class="{{ props.classes.root }}">
-    {{- imageHelper.renderSource(image, props.data.transform, transformedImages, props.data.lazy) -}}
-    {{- imageHelper.renderImage(image, placeholder, props.data.lazy, props.data.objectFit) -}}
-    {% if props.data.lazy %}
-      {{- imageHelper.renderNoScript(image) -}}
-    {% endif %}
-  </picture>
+{% if image %}
+  {# Native Craft transform presets — base transform defines aspect ratio & mode, widths drive srcset #}
+  {% set transformPresets = {
+    auto: {
+      base: { width: 1920 },
+      widths: ['480w', '960w', '1440w', '1920w'],
+    },
+    landscape: {
+      base: { width: 1920, height: 1080, mode: 'crop' },
+      widths: ['480w', '960w', '1440w', '1920w'],
+    },
+    portrait: {
+      base: { width: 1440, height: 1920, mode: 'crop' },
+      widths: ['480w', '960w', '1440w'],
+    },
+    square: {
+      base: { width: 1440, height: 1440, mode: 'crop' },
+      widths: ['480w', '960w', '1440w'],
+    },
+  } %}
 
-{% else %} {# use <img> per default #}
-  {% set placeholder = imageHelper.getPlaceHolder(image, image.width, image.height, props.data.dominantColor) %}
-  {{- imageHelper.renderImage(image, placeholder, props.data.lazy, props.data.objectFit, props.classes) -}}
-  {% if props.data.lazy %}
-    {{- imageHelper.renderNoScript(image) -}}
+  {% set isTransformable = image.kind == 'image' and image.extension|lower in ['jpg', 'jpeg', 'png', 'webp'] %}
+  {% set altText = image.altText ?? '' %}
+  {% set lazyClass = props.data.lazy ? 'lazyload' : '' %}
+  {% set loadingAttr = props.data.lazy ? 'lazy' : 'eager' %}
+  {% set srcAttr = props.data.lazy ? 'data-src' : 'src' %}
+  {% set srcsetAttr = props.data.lazy ? 'data-srcset' : 'srcset' %}
+  {% set bgStyle = props.data.dominantColor ? 'background-color: ' ~ props.data.dominantColor ~ ';' : '' %}
+  {% set fitStyle = props.data.objectFit ? 'object-fit: ' ~ props.data.objectFit ~ ';' : '' %}
+  {% set inlineStyle = (bgStyle ~ fitStyle)|trim %}
+
+  {% if isTransformable %}
+    {% set preset = transformPresets[props.data.transform] ?? transformPresets.auto %}
+    {% set baseTransform = preset.base %}
+    {% set widths = preset.widths %}
+    {% set webpTransform = baseTransform|merge({ format: 'webp' }) %}
+
+    <picture class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
+      <source
+        type="image/webp"
+        {{ srcsetAttr }}="{{ image.getSrcset(widths, webpTransform) }}"
+        sizes="{{ props.data.sizes }}"
+      >
+      <img
+        {{ srcAttr }}="{{ image.getUrl(baseTransform) }}"
+        {{ srcsetAttr }}="{{ image.getSrcset(widths, baseTransform) }}"
+        sizes="{{ props.data.sizes }}"
+        width="{{ baseTransform.width ?? image.width }}"
+        height="{{ baseTransform.height ?? image.height }}"
+        alt="{{ altText }}"
+        loading="{{ loadingAttr }}"
+        decoding="async"
+        class="{{ lazyClass }}"
+        {% if inlineStyle %}style="{{ inlineStyle }}"{% endif %}
+      >
+    </picture>
+  {% else %}
+    <img
+      src="{{ image.url }}"
+      width="{{ image.width }}"
+      height="{{ image.height }}"
+      alt="{{ altText }}"
+      loading="{{ loadingAttr }}"
+      decoding="async"
+      class="{{ props.classes.root }} {{ props.classes.custom }}"
+      {% if inlineStyle %}style="{{ inlineStyle }}"{% endif %}
+    >
   {% endif %}
 {% endif %}
