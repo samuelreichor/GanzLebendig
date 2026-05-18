@@ -43,6 +43,21 @@
   </main>
 
   {% block footer %}
-    <footer></footer>
+    {{ include('_components/footer/footer.twig', {
+      data: {
+        address: globals.address ??? null,
+        email: globals.eMail ??? null,
+        telephone: globals.telephone ??? null,
+        quickLinks: globals.footerQuickLinks.fixedOrder().eagerly().all()|map(l => {
+          url: l.getUrl(),
+          title: l.title,
+        }),
+        legalLinks: globals.footerLegalLinks.fixedOrder().eagerly().all()|map(l => {
+          url: l.getUrl(),
+          title: l.title,
+        }),
+        legalText: globals.footerLegalText ??? '',
+      },
+    }, with_context = false) }}
   {% endblock %}
 {% endblock %}

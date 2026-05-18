@@ -1,4 +1,4 @@
-dateModified: 1779047202
+dateModified: 1779049189
 elementSources:
   craft\elements\Asset:
     -
@@ -159,6 +159,7 @@ meta:
     7c8c16e4-d5b0-4b0a-9d51-5c9f64a9a226: Link # Link
     7f970b21-4477-4584-8c42-bb2768e327c2: 'Light Switch' # Light Switch
     9b8f35b7-0309-476b-9ca6-654d6d620e69: 'Public Schema' # Public Schema
+    09cfe177-0bc8-41ee-a388-792148e22b81: E-Mail # E-Mail
     72fc0e5d-7d00-4b05-9bb2-899d78a9e66f: 'Alt Text' # Alt Text
     78e52492-6ab5-4ac9-9e70-0448d9e80744: 'Navigations Links' # Navigations Links
     78eb4c24-9ee0-4fe1-85b6-902352ffc6af: Code # Code
@@ -171,6 +172,7 @@ meta:
     5502ecc3-271c-47e8-99ff-d06fe1a603a2: Editors # Editors
     31453c43-6490-4c7f-ae24-da061e930401: Image # Image
     93116f68-b0f3-4e73-818b-9d4c0a2d4b57: Headline # Headline
+    597585d5-f62e-4693-84c2-4cb781bc3664: Address # Address
     745244db-cd1b-4b14-ab0f-07d6ddcf070f: Home # Home
     8352538e-0d17-48be-bf6d-c03a439cb40a: 'Template Images' # Template Images
     61520300-516c-4f2d-b7ec-b377b45ac195: New # New
@@ -182,6 +184,7 @@ meta:
     b39b7964-2e04-4b00-92ee-c163a563b62b: Content # Content
     d0b81f54-9f0b-47ff-8b70-ede217a82e9d: $SITE_NAME # $SITE_NAME
     d0e0b0d1-923a-4023-8086-6d35fc5ccaa4: Image # Image
+    d2faace4-0e73-4a4d-b165-aa4b5557bb8a: Telephone # Telephone
     d99f9653-f764-42e2-8722-2d17f41c2367: Size # Size
     e1c7cfa0-c34e-4547-bd78-7eb71f251565: Text # Text
     ef87572b-5f4b-48cf-8d27-f9c045a9044f: 'Image and Text' # Image and Text

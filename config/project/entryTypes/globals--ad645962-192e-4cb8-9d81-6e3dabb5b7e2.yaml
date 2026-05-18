@@ -75,6 +75,116 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 50
+          -
+            dateAdded: '2026-05-17T20:17:16+00:00'
+            elementCondition: null
+            heading: Footer
+            type: craft\fieldlayoutelements\Heading
+            uid: 98e73686-a6b6-4b96-9d3f-a9dff0342409
+            userCondition: null
+          -
+            dateAdded: '2026-05-17T20:17:16+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 78e52492-6ab5-4ac9-9e70-0448d9e80744 # Navigations Links
+            handle: footerQuickLinks
+            instructions: null
+            label: 'Footer Quick Links'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 43d5d0b2-3b6a-4ac0-8d98-9b5c99411f5e
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-05-17T20:17:16+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 78e52492-6ab5-4ac9-9e70-0448d9e80744 # Navigations Links
+            handle: footerLegalLinks
+            instructions: null
+            label: 'Footer Legal Links'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d336d96d-1094-437c-aaaf-69fc16f003e7
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-05-17T20:17:16+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 93116f68-b0f3-4e73-818b-9d4c0a2d4b57 # Headline
+            handle: footerLegalText
+            instructions: null
+            label: 'Footer Legal Text'
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 04b19dc0-acbb-48bd-8bf5-92a66480ead0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-05-17T20:19:49+00:00'
+            elementCondition: null
+            heading: 'Contact Information'
+            type: craft\fieldlayoutelements\Heading
+            uid: a4c569ee-04ed-436a-a4fd-6bf808979ed6
+            userCondition: null
+          -
+            dateAdded: '2026-05-17T20:19:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 597585d5-f62e-4693-84c2-4cb781bc3664 # Address
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: efb2c22a-1de9-4f2b-b3de-535466c2b90f
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-05-17T20:19:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 09cfe177-0bc8-41ee-a388-792148e22b81 # E-Mail
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bf267924-1416-458c-a0a2-5e545b90c431
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2026-05-17T20:19:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d2faace4-0e73-4a4d-b165-aa4b5557bb8a # Telephone
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bbd80e88-3661-4d00-bef6-f562f1d65b44
+            userCondition: null
+            warning: null
+            width: 50
         name: Inhalt
         uid: 29a386a8-3443-40e8-9582-4f79059d771c
         userCondition: null

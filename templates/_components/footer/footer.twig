@@ -1,0 +1,106 @@
+{# >>> Comp Settings #}
+{% set compDefaults = {
+  data: {
+    name: 'c-footer',
+    address: null,
+    email: null,
+    telephone: null,
+    quickLinks: null,
+    legalLinks: null,
+    legalText: '',
+    contactHeading: 'Kontakt',
+    quickHeading: 'Navigation',
+  },
+  classes: {
+    root: 'c-footer bg-cream-100 text-ink-900 mt-ds-24',
+    inner: 'container pt-ds-20',
+    columns: 'col-span-full grid grid-cols-1 md:grid-cols-2 gap-ds-12 md:gap-ds-16',
+    columnHeading: 'text-xl font-medium text-ink-900 mb-ds-6',
+    contactList: 'flex flex-col gap-ds-2 text-ink-700',
+    contactItem: 'flex flex-col gap-ds-1',
+    contactLink: 'hover:text-sage-700 transition-colors',
+    quickList: 'flex flex-col gap-ds-2',
+    quickLink: 'text-ink-700 hover:text-sage-700 transition-colors',
+    bottom: 'col-span-full mt-ds-10 py-ds-8 border-t border-cream-200 flex flex-col md:flex-row md:items-center md:justify-between gap-ds-2 text-sm text-ink-700',
+    legalLinks: 'flex flex-wrap gap-x-ds-6 gap-y-ds-2',
+    legalLink: 'hover:text-sage-700 transition-colors',
+    custom: '',
+  },
+} %}
+
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
+
+{% set hasQuickLinks = props.data.quickLinks is iterable and props.data.quickLinks | length > 0 %}
+{% set hasLegalLinks = props.data.legalLinks is iterable and props.data.legalLinks | length > 0 %}
+{% set hasContact = props.data.address or props.data.email or props.data.telephone %}
+
+<footer class="{{ props.classes.root }} {{ props.classes.custom }}">
+  <div class="{{ props.classes.inner }}">
+    <div class="{{ props.classes.columns }}">
+      {# Column 1 — Contact #}
+      {% if hasContact %}
+        <div>
+          <h2 class="{{ props.classes.columnHeading }}">{{ props.data.contactHeading }}</h2>
+          <ul class="{{ props.classes.contactList }}">
+            {% if props.data.address %}
+              {% set addr = props.data.address.eagerly().one() %}
+              <li class="{{ props.classes.contactItem }}">
+                {% if addr.addressLine1 %}<span>{{ addr.addressLine1 }}, {{ addr.postalCode }}{% if addr.postalCode and addr.locality %} {% endif %}{{ addr.locality }}</span>{% endif %}
+                {% if addr.addressLine2 %}<span>{{ addr.addressLine2 }}</span>{% endif %}
+              </li>
+            {% endif %}
+
+            {% if props.data.email %}
+              <li>
+                <a href="{{ props.data.email.url }}" class="{{ props.classes.contactLink }}">{{ props.data.email.label }}</a>
+              </li>
+            {% endif %}
+
+            {% if props.data.telephone %}
+              <li>
+                <a href="{{ props.data.telephone.url }}" class="{{ props.classes.contactLink }}">{{ props.data.telephone.label }}</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      {% endif %}
+
+      {# Column 2 — Quick Links #}
+      {% if hasQuickLinks %}
+        <div>
+          <h2 class="{{ props.classes.columnHeading }}">{{ props.data.quickHeading }}</h2>
+          <ul class="{{ props.classes.quickList }}">
+            {% for link in props.data.quickLinks %}
+              <li>
+                <a href="{{ link.url }}" class="{{ props.classes.quickLink }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+
+    {# Bottom — Legal links + legal text #}
+    {% if hasLegalLinks or props.data.legalText %}
+      <div class="{{ props.classes.bottom }}">
+        {% if props.data.legalText %}
+          <p>{{ props.data.legalText|replace('{year}', 'now' | date('Y')) }}</p>
+        {% endif %}
+
+        {% if hasLegalLinks %}
+          <ul class="{{ props.classes.legalLinks }}">
+            {% for link in props.data.legalLinks %}
+              <li>
+                <a href="{{ link.url }}" class="{{ props.classes.legalLink }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</footer>
