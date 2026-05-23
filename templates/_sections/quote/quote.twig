@@ -28,7 +28,7 @@
   {% set hasImage = props.data.bgImage is not empty %}
   {% set panelTone = hasImage ? 'text-cream-50 drop-shadow-md' : 'bg-cream-100 text-ink-900' %}
   {% set markTone = hasImage ? 'text-cream-50/60' : 'text-sage-400' %}
-  {% set authorTone = hasImage ? 'text-cream-100' : 'text-ink-500' %}
+  {% set authorTone = hasImage ? 'text-cream-50' : 'text-ink-500' %}
 
   <div class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
     <figure class="{{ props.classes.panel }} {{ panelTone }}">

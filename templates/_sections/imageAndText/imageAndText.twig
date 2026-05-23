@@ -28,7 +28,7 @@
 {% if props.data.text or props.data.image %}
   <section class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
     {% if props.data.text or props.data.link %}
-      <div class="{{ props.classes.textCol }} {{ props.data.switched ? 'md:order-2 md:ml-ds-20' : 'md:order-1 md:mr-ds-20' }}">
+      <div class="{{ props.classes.textCol }} {{ props.data.switched ? 'md:order-2 md:ml-ds-20' : 'order-2 md:order-1 md:mr-ds-20' }}">
         {% if props.data.text %}
           {{ include('_components/text/text.twig', {
             data: {
@@ -63,7 +63,7 @@
           rounded: true,
         },
         classes: {
-          custom: props.classes.imageCol ~ ' ' ~ (props.data.switched ? 'md:order-1' : 'md:order-2'),
+          custom: props.classes.imageCol ~ ' ' ~ (props.data.switched ? 'md:order-1' : 'order-1 md:order-2'),
         }
       }, with_context = false) }}
     {% endif %}

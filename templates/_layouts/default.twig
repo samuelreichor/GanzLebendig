@@ -31,11 +31,13 @@
     {% endblock %}
 
     {% block content %}
-      {{ include('_contentBuilder/contentBuilder.twig', {
-        data: {
-          contentQuery: entry.contentBuilder ??? null,
-        },
-      }, with_context = false) }}
+      <div class="relative z-10 bg-white flow-root p-bottom-lg">
+        {{ include('_contentBuilder/contentBuilder.twig', {
+          data: {
+            contentQuery: entry.contentBuilder ??? null,
+          },
+        }, with_context = false) }}
+      </div>
     {% endblock %}
 
     {% if getenv('CRAFT_ENVIRONMENT') != "production" %}
@@ -44,21 +46,23 @@
   </main>
 
   {% block footer %}
-    {{ include('_components/footer/footer.twig', {
-      data: {
-        address: globals.address ??? null,
-        email: globals.eMail ??? null,
-        telephone: globals.telephone ??? null,
-        quickLinks: globals.footerQuickLinks.fixedOrder().eagerly().all()|map(l => {
-          url: l.getUrl(),
-          title: l.title,
-        }),
-        legalLinks: globals.footerLegalLinks.fixedOrder().eagerly().all()|map(l => {
-          url: l.getUrl(),
-          title: l.title,
-        }),
-        legalText: globals.footerLegalText ??? '',
-      },
-    }, with_context = false) }}
+    <div class="relative z-10 bg-cream-50 flow-root">
+      {{ include('_components/footer/footer.twig', {
+        data: {
+          address: globals.address ??? null,
+          email: globals.eMail ??? null,
+          telephone: globals.telephone ??? null,
+          quickLinks: globals.footerQuickLinks.fixedOrder().eagerly().all()|map(l => {
+            url: l.getUrl(),
+            title: l.title,
+          }),
+          legalLinks: globals.footerLegalLinks.fixedOrder().eagerly().all()|map(l => {
+            url: l.getUrl(),
+            title: l.title,
+          }),
+          legalText: globals.footerLegalText ??? '',
+        },
+      }, with_context = false) }}
+    </div>
   {% endblock %}
 {% endblock %}

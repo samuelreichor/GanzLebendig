@@ -8,9 +8,9 @@
     link: null,
   },
   classes: {
-    root: 'relative w-full overflow-hidden flex items-center',
+    root: 'w-full flex items-center',
     custom: '',
-    bgWrap: 'absolute inset-0 z-0',
+    bgWrap: 'js-hero-bg absolute inset-0 z-0',
     overlay: 'absolute inset-0 z-10 bg-gradient-to-b from-ink-900/40 via-ink-900/45 to-ink-900/70',
     overlayTop: 'absolute top-0 inset-x-0 h-[calc(var(--navigation-height)+1rem)] z-10 bg-gradient-to-b from-ink-900/65 to-transparent pointer-events-none',
     content: 'relative z-20 w-full outside-container text-center mt-[calc(var(--navigation-height)-1rem)]',
@@ -26,7 +26,7 @@
 } %}
 
 {% if props.data.headline %}
-  <header class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }} {{ not props.data.image ? 'bg-cream-100' }}">
+  <header class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }} {{ props.data.image ? 'js-hero relative overflow-hidden' : 'relative bg-cream-50' }}">
     {% if props.data.image %}
       <div class="{{ props.classes.bgWrap }}">
         {{ include('_components/image/image.twig', {
@@ -46,7 +46,7 @@
       <div class="{{ props.classes.overlayTop }}"></div>
     {% endif %}
 
-    <div class="{{ props.classes.content }} {{ props.data.image ? 'py-ds-56' : 'py-ds-40' }}">
+    <div class="{{ props.classes.content }} {{ props.data.image ? 'py-20 md:py-40' : 'py-ds-32' }}">
       <div class="{{ props.classes.contentInner }}">
         {{ include('_components/headline/headline.twig', {
           data: {
@@ -65,6 +65,7 @@
               text: props.data.text,
               raw: true,
               size: 'xl',
+              alignment: 'center',
             },
             classes: {
               custom: props.data.image ? 'mx-auto text-cream-50/95 drop-shadow-lg' : 'mx-auto text-ink-700',

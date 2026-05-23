@@ -1,4 +1,4 @@
-dateModified: 1779536801
+dateModified: 1779543518
 elementSources:
   craft\elements\Asset:
     -
@@ -190,6 +190,7 @@ meta:
     2066cfb8-1731-4aa2-8ff2-a6be8a3b17e6: 'Plain Text Multiline' # Plain Text Multiline
     4029eccd-d1d9-4076-81f9-58f315a363f2: Pagebuilder # Pagebuilder
     5502ecc3-271c-47e8-99ff-d06fe1a603a2: Editors # Editors
+    6796f5ae-f87d-4601-bb28-35813344827e: 'Image Ratio' # Image Ratio
     31453c43-6490-4c7f-ae24-da061e930401: Image # Image
     93116f68-b0f3-4e73-818b-9d4c0a2d4b57: Headline # Headline
     597585d5-f62e-4693-84c2-4cb781bc3664: Address # Address
@@ -244,6 +245,29 @@ plugins:
     edition: lite
     enabled: true
     schemaVersion: 1.2.0
+    settings:
+      attachPdfReport: true
+      autoCleanup: true
+      dataRetentionDays: 365
+      defaultDateRange: 30d
+      emailFrequency: never
+      enabled: true
+      excludeLoggedInUsers: false
+      excludedPaths:
+        - /admin
+        - /cpresources
+        - /actions
+      geoIpDatabasePath: '@storage/geoip/GeoLite2-Country.mmdb'
+      logLevel: default
+      maxRetryAttempts: 3
+      processTrackingJobPriority: 20
+      queueJobTtr: 300
+      realtimeTtl: 60
+      respectDoNotTrack: true
+      showEntrySidebar: true
+      showRealtimeWidget: true
+      useExternalDatabase: false
+      useQueue: true
   quick-edit:
     edition: standard
     enabled: true

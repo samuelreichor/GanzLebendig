@@ -12,15 +12,15 @@
 
   h2,
   &.h2-styling {
-    font-size: var(--text-6xl);
-    line-height: var(--text-6xl--line-height);
+    font-size: var(--text-5xl);
+    line-height: var(--text-5xl--line-height);
     font-weight: 600;
   }
 
   h3,
   &.h3-styling {
-    font-size: var(--text-4xl);
-    line-height: var(--text-4xl--line-height);
+    font-size: var(--text-3xl);
+    line-height: var(--text-3xl--line-height);
     font-weight: 600;
   }
 

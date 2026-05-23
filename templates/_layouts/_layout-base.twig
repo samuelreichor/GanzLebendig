@@ -12,8 +12,10 @@
   </head>
 
   <body>
-  {% block body %}
-  {% endblock %}
+  {% cache %}
+    {% block body %}
+    {% endblock %}
+  {% endcache %}
 
   {{ craft.vite.script("assets/js/app.ts", false) }}
   {{ craft.insights.trackingScript() }}

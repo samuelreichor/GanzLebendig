@@ -35,7 +35,8 @@ settings:
             -
               - sources
               -
-                - singles
+                - 'single:745244db-cd1b-4b14-ab0f-07d6ddcf070f' # Home
+                - 'single:873f989e-0227-4995-a310-6b6fb4e377a3' # Kontakt
                 - 'section:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
             -
               - showUnpermittedSections

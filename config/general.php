@@ -17,7 +17,7 @@ return [
     'allowAdminChanges' => false,
     'allowedFileExtensions' => ['jpg', 'png', 'jpeg', 'webP', 'gif', 'svg', 'mp4', 'pdf', 'zip', 'csv'],
     'allowUpdates' => false,
-    'cacheDuration' => false,
+    'cacheDuration' => 0,
     'defaultTokenDuration' => 'P2W',
     'defaultSearchTermOptions' => [
       'subLeft' => true,

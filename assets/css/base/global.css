@@ -81,4 +81,8 @@
     background-color: var(--color-sage-200);
     color: var(--color-ink-900);
   }
+
+  main {
+    min-height: calc(100vh);
+  }
 }
