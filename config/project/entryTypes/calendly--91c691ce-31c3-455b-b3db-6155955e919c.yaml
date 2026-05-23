@@ -1,0 +1,35 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  ea8f6cdf-bae3-4504-b90f-56a0021d9c3c:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-05-23T08:58:35+00:00'
+            dismissible: false
+            elementCondition: null
+            style: tip
+            tip: 'Der Calendly Kalender wird an der Stelle eingebunden.'
+            type: craft\fieldlayoutelements\Tip
+            uid: 27e60f17-3e7f-496d-bfd7-11866e5921e4
+            userCondition: null
+        name: Inhalt
+        uid: a37e8844-0de9-419a-a8d4-5e165aac5398
+        userCondition: null
+    thumbFieldKey: null
+handle: calendly
+hasTitleField: false
+icon: null
+name: Calendly
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

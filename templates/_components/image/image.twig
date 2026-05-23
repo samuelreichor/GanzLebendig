@@ -7,7 +7,8 @@
     lazy: true,
     transform: 'auto',
     objectFit: '',
-    sizes: '100vw',
+    sizes: 'auto',
+    rounded: false,
   },
   classes: {
     root: 'w-full h-full',
@@ -21,17 +22,107 @@
   classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
 } %}
 
-{% if props.data.image %}
-  {% if props.data.showCaption and props.data.image.caption %} {# use <figure> if a caption should be shown #}
-    {{ include('_components/image/partials/figure.twig', {
-      data: props.data,
-      classes: props.classes,
-    }, with_context = false) }}
+{% set image = props.data.image %}
 
-  {% else %} {# use only <picture>/<img> if there is no caption #}
-    {{ include('_components/image/partials/image.twig', {
-      data: props.data,
-      classes: props.classes,
-    }, with_context = false) }}
+{% if image %}
+  {# Native Craft transform presets — base transform defines aspect ratio & mode, widths drive srcset #}
+  {% set transformPresets = {
+    auto: {
+      base: { width: 1920 },
+      widths: ['480w', '960w', '1440w', '1920w'],
+    },
+    landscape: {
+      base: { width: 1920, height: 1080, mode: 'crop' },
+      widths: ['480w', '960w', '1440w', '1920w'],
+    },
+    portrait: {
+      base: { width: 1440, height: 1920, mode: 'crop' },
+      widths: ['480w', '960w', '1440w'],
+    },
+    square: {
+      base: { width: 1440, height: 1440, mode: 'crop' },
+      widths: ['480w', '960w', '1440w'],
+    },
+  } %}
+
+  {% set isTransformable = image.kind == 'image' and image.extension|lower in ['jpg', 'jpeg', 'png', 'webp'] %}
+  {% set altText = image.altText ?? '' %}
+  {% set hasCaption = props.data.showCaption and image.caption %}
+
+  {# Lazy images run through lazysizes (data-* attrs + .lazyload). Eager images are
+     above the fold, so load them natively and flag the LCP candidate. #}
+  {% set isLazy = props.data.lazy %}
+  {% set srcAttr = isLazy ? 'data-src' : 'src' %}
+  {% set srcsetAttr = isLazy ? 'data-srcset' : 'srcset' %}
+  {% set loadingAttr = isLazy ? 'lazy' : 'eager' %}
+
+  {# sizes: 'auto' lets lazysizes compute it from the rendered width (data-sizes="auto",
+     which it also propagates to the <source>). Native sizes="auto" isn't cross-browser yet.
+     Auto only works for lazysizes-managed images, so eager falls back to 100vw. #}
+  {% set useAutoSizes = isLazy and props.data.sizes == 'auto' %}
+  {% set sizesValue = props.data.sizes == 'auto' ? '100vw' : props.data.sizes %}
+
+  {% set bgStyle = props.data.dominantColor ? 'background-color: ' ~ props.data.dominantColor ~ ';' : '' %}
+  {% set fitStyle = props.data.objectFit ? 'object-fit: ' ~ props.data.objectFit ~ ';' : '' %}
+  {% set inlineStyle = (bgStyle ~ fitStyle)|trim %}
+
+  {# When captioned, the layout classes live on <figure>; otherwise on the media element itself. #}
+  {% set mediaClasses = hasCaption ? '' : (props.classes.root ~ ' ' ~ props.classes.custom)|trim %}
+
+  {# Soft rounded corners on the image itself (border-radius clips replaced content). #}
+  {% set roundClass = props.data.rounded ? 'rounded-lg' : '' %}
+
+  {% if hasCaption %}
+    <figure class="figure {{ props.classes.root }} {{ props.classes.custom }}">
+  {% endif %}
+
+  {% if isTransformable %}
+    {% set preset = transformPresets[props.data.transform] ?? transformPresets.auto %}
+    {% set baseTransform = preset.base %}
+    {% set webpTransform = baseTransform|merge({ format: 'webp' }) %}
+
+    <picture class="image {{ mediaClasses }}">
+      <source
+        type="image/webp"
+        {{ srcsetAttr }}="{{ image.getSrcset(preset.widths, webpTransform) }}"
+        {% if not useAutoSizes %}sizes="{{ sizesValue }}"{% endif %}
+      >
+      <img
+        {{ srcAttr }}="{{ image.getUrl(baseTransform) }}"
+        {{ srcsetAttr }}="{{ image.getSrcset(preset.widths, baseTransform) }}"
+        {% if useAutoSizes %}data-sizes="auto"{% else %}sizes="{{ sizesValue }}"{% endif %}
+        width="{{ baseTransform.width ?? image.width }}"
+        height="{{ baseTransform.height ?? image.height }}"
+        alt="{{ altText }}"
+        loading="{{ loadingAttr }}"
+        {% if not isLazy %}fetchpriority="high"{% endif %}
+        decoding="async"
+        class="{{ mediaClasses }} {{ roundClass }} {{ isLazy ? 'lazyload' }}"
+        {% if inlineStyle %}style="{{ inlineStyle }}"{% endif %}
+      >
+    </picture>
+  {% else %}
+    <img
+      src="{{ image.url }}"
+      width="{{ image.width }}"
+      height="{{ image.height }}"
+      alt="{{ altText }}"
+      loading="{{ loadingAttr }}"
+      {% if not isLazy %}fetchpriority="high"{% endif %}
+      decoding="async"
+      class="{{ mediaClasses }} {{ roundClass }}"
+      {% if inlineStyle %}style="{{ inlineStyle }}"{% endif %}
+    >
+  {% endif %}
+
+  {% if hasCaption %}
+      <figcaption class="figure__caption">
+        {{ include('_components/text/text.twig', {
+          data: {
+            text: image.caption,
+          }
+        }, with_context = false) }}
+      </figcaption>
+    </figure>
   {% endif %}
 {% endif %}

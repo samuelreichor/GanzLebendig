@@ -1,0 +1,118 @@
+{# >>> Comp Settings #}
+{% set compDefaults = {
+  data: {
+    name: 's-iconWithColumns',
+    headline: '',
+    text: '',
+    columns: null,
+  },
+  classes: {
+    root: 'container m-top-md',
+    custom: '',
+    intro: 'col-span-12 lg:col-span-8 lg:col-start-3 flex flex-col gap-ds-4 mb-ds-12 md:mb-ds-16',
+    grid: 'col-span-12 grid grid-cols-1 items-start gap-ds-12 mx-auto',
+    item: 'flex flex-col items-center text-center gap-ds-4',
+    iconSlot: 'w-16 h-16 md:w-20 md:h-20 shrink-0',
+    iconWrap: 'flex items-center justify-center w-full h-full rounded-full bg-sage-100',
+    icon: 'block w-8 h-8 md:w-10 md:h-10 bg-sage-700',
+    itemText: 'text-ink-700',
+  },
+} %}
+
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
+
+{% if props.data.columns | length %}
+  {% set count = props.data.columns | length %}
+  {# Symmetric grid: equal columns, never more than four abreast, few items stay centred. #}
+  {% set gridCols = {
+    1: 'max-w-md',
+    2: 'sm:grid-cols-2 max-w-3xl',
+    4: 'sm:grid-cols-2 lg:grid-cols-4',
+  }[count] ?? 'sm:grid-cols-2 lg:grid-cols-3' %}
+
+  {# Reserve the icon row when any column has one, so headings/text stay aligned across columns. #}
+  {% set anyIcon = props.data.columns|filter(c => c.image is not empty)|length > 0 %}
+
+  <div class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
+    {% if props.data.headline or props.data.text %}
+      <div class="{{ props.classes.intro }}">
+        {% if props.data.headline %}
+          {{ include('_components/headline/headline.twig', {
+            data: {
+              text: props.data.headline,
+              variantSize: 'h2',
+              tag: 'h2',
+            },
+            classes: {
+              custom: 'mx-auto text-center',
+            }
+          }, with_context = false) }}
+        {% endif %}
+
+        {% if props.data.text %}
+          {{ include('_components/text/text.twig', {
+            data: {
+              text: props.data.text,
+              raw: true,
+              alignment: 'center'
+            },
+            classes: {
+              custom: 'mx-auto',
+            }
+          }, with_context = false) }}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <ul class="{{ props.classes.grid }} {{ gridCols }}">
+      {% for column in props.data.columns %}
+        <li class="{{ props.classes.item }}">
+          {% if anyIcon %}
+            <div class="{{ props.classes.iconSlot }}">
+              {% if column.image %}
+                <div class="{{ props.classes.iconWrap }}">
+                  <span
+                    class="{{ props.classes.icon }}"
+                    style="-webkit-mask: url('{{ column.image.url }}') center / contain no-repeat; mask: url('{{ column.image.url }}') center / contain no-repeat;"
+                    aria-hidden="true"
+                  ></span>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if column.headline %}
+            {{ include('_components/headline/headline.twig', {
+              data: {
+                text: column.headline,
+                variantSize: 'h4',
+                tag: 'h3',
+              },
+              classes: {
+                custom: 'mx-auto',
+              }
+            }, with_context = false) }}
+          {% endif %}
+
+          {% if column.text %}
+            {{ include('_components/text/text.twig', {
+              data: {
+                text: column.text,
+                raw: true,
+                size: 'base',
+                alignment: 'center',
+              },
+              classes: {
+                custom: props.classes.itemText,
+              }
+            }, with_context = false) }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

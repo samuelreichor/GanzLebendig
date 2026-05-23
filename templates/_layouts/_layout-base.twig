@@ -15,7 +15,7 @@
   {% block body %}
   {% endblock %}
 
-  {{ craft.vite.script("assets/js/app.ts") }}
+  {{ craft.vite.script("assets/js/app.ts", false) }}
   {{ craft.insights.trackingScript() }}
   </body>
   </html>

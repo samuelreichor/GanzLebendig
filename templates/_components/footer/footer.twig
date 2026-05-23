@@ -12,15 +12,16 @@
     quickHeading: 'Navigation',
   },
   classes: {
-    root: 'c-footer bg-cream-100 text-ink-900 mt-ds-24',
+    root: 'c-footer bg-cream-50 mt-ds-24 text-ink-900',
     inner: 'container pt-ds-20',
     columns: 'col-span-full grid grid-cols-1 md:grid-cols-2 gap-ds-12 md:gap-ds-16',
-    columnHeading: 'text-xl font-medium text-ink-900 mb-ds-6',
-    contactList: 'flex flex-col gap-ds-2 text-ink-700',
-    contactItem: 'flex flex-col gap-ds-1',
+    columnHeading: 'text-xl font-bold mb-ds-6',
+    contactList: 'flex flex-col gap-ds-3',
+    contactItem: 'flex items-start gap-ds-2',
+    contactIcon: 'flex-none mt-0.5 text-current',
     contactLink: 'hover:text-sage-700 transition-colors',
     quickList: 'flex flex-col gap-ds-2',
-    quickLink: 'text-ink-700 hover:text-sage-700 transition-colors',
+    quickLink: 'hover:text-sage-700 transition-colors',
     bottom: 'col-span-full mt-ds-10 py-ds-8 border-t border-cream-200 flex flex-col md:flex-row md:items-center md:justify-between gap-ds-2 text-sm text-ink-700',
     legalLinks: 'flex flex-wrap gap-x-ds-6 gap-y-ds-2',
     legalLink: 'hover:text-sage-700 transition-colors',
@@ -49,19 +50,33 @@
             {% if props.data.address %}
               {% set addr = props.data.address.eagerly().one() %}
               <li class="{{ props.classes.contactItem }}">
-                {% if addr.addressLine1 %}<span>{{ addr.addressLine1 }}, {{ addr.postalCode }}{% if addr.postalCode and addr.locality %} {% endif %}{{ addr.locality }}</span>{% endif %}
-                {% if addr.addressLine2 %}<span>{{ addr.addressLine2 }}</span>{% endif %}
+                {{ include('_components/icon/icon.twig', {
+                  data: { icon: 'map-pin', variant: 'small' },
+                  classes: { custom: props.classes.contactIcon },
+                }, with_context = false) }}
+                <span class="flex flex-col gap-ds-1">
+                  {% if addr.addressLine1 %}<span>{{ addr.addressLine1 }}, {{ addr.postalCode }}{% if addr.postalCode and addr.locality %} {% endif %}{{ addr.locality }}</span>{% endif %}
+                  {% if addr.addressLine2 %}<span>{{ addr.addressLine2 }}</span>{% endif %}
+                </span>
               </li>
             {% endif %}
 
             {% if props.data.email %}
-              <li>
+              <li class="{{ props.classes.contactItem }}">
+                {{ include('_components/icon/icon.twig', {
+                  data: { icon: 'mail', variant: 'small' },
+                  classes: { custom: props.classes.contactIcon },
+                }, with_context = false) }}
                 <a href="{{ props.data.email.url }}" class="{{ props.classes.contactLink }}">{{ props.data.email.label }}</a>
               </li>
             {% endif %}
 
             {% if props.data.telephone %}
-              <li>
+              <li class="{{ props.classes.contactItem }}">
+                {{ include('_components/icon/icon.twig', {
+                  data: { icon: 'phone', variant: 'small' },
+                  classes: { custom: props.classes.contactIcon },
+                }, with_context = false) }}
                 <a href="{{ props.data.telephone.url }}" class="{{ props.classes.contactLink }}">{{ props.data.telephone.label }}</a>
               </li>
             {% endif %}

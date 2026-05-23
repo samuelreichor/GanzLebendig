@@ -1,0 +1,74 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  8100449e-8af5-408c-9af9-e38b47a7461a:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-05-23T08:45:05+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 93116f68-b0f3-4e73-818b-9d4c0a2d4b57 # Headline
+            handle: headline
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: dfdbaa83-4fe6-4869-a3ee-26a893b4ff25
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-05-23T08:48:27+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9729874d-1cb1-4af2-a31b-b5cdd0e61c51 # Simple Richtext
+            handle: text
+            instructions: null
+            label: Text
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9c8ee2ee-9570-4943-8229-3e5c8dd67374
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-05-23T08:45:05+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d017825a-ed48-4d54-accb-36bb565c7e3a # Columns with Icons
+            handle: null
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f6153d54-becb-4ee7-8e62-209f894b2831
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 1198f14a-9382-4d72-826b-1ed0416e39b7
+        userCondition: null
+    thumbFieldKey: null
+handle: iconWithColumns
+hasTitleField: false
+icon: null
+name: 'Icon with Columns'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

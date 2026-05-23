@@ -2,12 +2,13 @@
 
 {% set globals = craft.entries.section('globals').eagerly().one() %}
 {% set heroImage = entry.hero.image.eagerly().one() ??? null %}
+{% set navigationTheme = navigationTheme ??? (heroImage ? 'overlay' : 'light') %}
 
 {% block body %}
   {% block navigation %}
     {{ include('_components/navigation/navigation.twig', {
       data: {
-        theme: heroImage ? 'overlay' : 'light',
+        theme: navigationTheme,
         nodes: globals.navigationsLinks.fixedOrder().eagerly().all()|map(l => {
           url: l.getUrl(),
           title: l.title,

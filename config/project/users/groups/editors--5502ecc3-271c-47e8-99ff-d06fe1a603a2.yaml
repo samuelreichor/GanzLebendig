@@ -4,17 +4,17 @@ name: Editors
 permissions:
   - accesscp
   - 'assignusergroup:5502ecc3-271c-47e8-99ff-d06fe1a603a2' # Editors
-  - 'createentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+  - 'createentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
   - 'createfolders:5cce6b80-a35c-4207-82e0-3940c9091376' # Images
   - 'createfolders:c5b55746-9b95-40a4-9e04-178618e02cff'
   - 'deleteassets:5cce6b80-a35c-4207-82e0-3940c9091376' # Images
   - 'deleteassets:c5b55746-9b95-40a4-9e04-178618e02cff'
-  - 'deleteentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+  - 'deleteentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
   - 'deletepeerassets:5cce6b80-a35c-4207-82e0-3940c9091376' # Images
   - 'deletepeerassets:c5b55746-9b95-40a4-9e04-178618e02cff'
-  - 'deletepeerentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+  - 'deletepeerentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
   - 'deletepeerentrydrafts:745244db-cd1b-4b14-ab0f-07d6ddcf070f' # Home
-  - 'deletepeerentrydrafts:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+  - 'deletepeerentrydrafts:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
   - 'editimages:5cce6b80-a35c-4207-82e0-3940c9091376' # Images
   - 'editimages:c5b55746-9b95-40a4-9e04-178618e02cff'
   - 'editpeerimages:5cce6b80-a35c-4207-82e0-3940c9091376' # Images
@@ -25,25 +25,25 @@ permissions:
   - 'replacepeerfiles:c5b55746-9b95-40a4-9e04-178618e02cff'
   - 'saveassets:5cce6b80-a35c-4207-82e0-3940c9091376' # Images
   - 'saveassets:c5b55746-9b95-40a4-9e04-178618e02cff'
-  - 'saveentries:1854f3be-cac9-430d-bde8-9093b969668c' # Errors
+  - 'saveentries:1854f3be-cac9-430d-bde8-9093b969668c' # Error Seiten
   - 'saveentries:745244db-cd1b-4b14-ab0f-07d6ddcf070f' # Home
-  - 'saveentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+  - 'saveentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
   - 'savepeerassets:5cce6b80-a35c-4207-82e0-3940c9091376' # Images
   - 'savepeerassets:c5b55746-9b95-40a4-9e04-178618e02cff'
-  - 'savepeerentries:1854f3be-cac9-430d-bde8-9093b969668c' # Errors
-  - 'savepeerentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
-  - 'savepeerentrydrafts:1854f3be-cac9-430d-bde8-9093b969668c' # Errors
+  - 'savepeerentries:1854f3be-cac9-430d-bde8-9093b969668c' # Error Seiten
+  - 'savepeerentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
+  - 'savepeerentrydrafts:1854f3be-cac9-430d-bde8-9093b969668c' # Error Seiten
   - 'savepeerentrydrafts:745244db-cd1b-4b14-ab0f-07d6ddcf070f' # Home
-  - 'savepeerentrydrafts:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+  - 'savepeerentrydrafts:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
   - 'viewassets:5cce6b80-a35c-4207-82e0-3940c9091376' # Images
   - 'viewassets:c5b55746-9b95-40a4-9e04-178618e02cff'
-  - 'viewentries:1854f3be-cac9-430d-bde8-9093b969668c' # Errors
+  - 'viewentries:1854f3be-cac9-430d-bde8-9093b969668c' # Error Seiten
   - 'viewentries:745244db-cd1b-4b14-ab0f-07d6ddcf070f' # Home
-  - 'viewentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+  - 'viewentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
   - 'viewpeerassets:5cce6b80-a35c-4207-82e0-3940c9091376' # Images
   - 'viewpeerassets:c5b55746-9b95-40a4-9e04-178618e02cff'
-  - 'viewpeerentries:1854f3be-cac9-430d-bde8-9093b969668c' # Errors
-  - 'viewpeerentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
-  - 'viewpeerentrydrafts:1854f3be-cac9-430d-bde8-9093b969668c' # Errors
+  - 'viewpeerentries:1854f3be-cac9-430d-bde8-9093b969668c' # Error Seiten
+  - 'viewpeerentries:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
+  - 'viewpeerentrydrafts:1854f3be-cac9-430d-bde8-9093b969668c' # Error Seiten
   - 'viewpeerentrydrafts:745244db-cd1b-4b14-ab0f-07d6ddcf070f' # Home
-  - 'viewpeerentrydrafts:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+  - 'viewpeerentrydrafts:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten

@@ -3,6 +3,7 @@
   data: {
     name: 's-text',
     text: '',
+    alignment: 'left',
   },
   classes: {
     root: 'container m-top-md',
@@ -18,14 +19,17 @@
 
 {% if props.data.text %}
   <div class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
-    {{ include('_components/text/text.twig', {
-      data: {
-        text: props.data.text,
-        raw: true,
-      },
-      classes: {
-        custom: 'col-span-full',
-      }
-    }, with_context = false) }}
+    <div class="col-span-full {{ props.data.alignment == 'center' ? 'mx-auto' }}">
+      {{ include('_components/text/text.twig', {
+        data: {
+          text: props.data.text,
+          raw: true,
+          alignment: props.data.alignment,
+        },
+        classes: {
+          custom: 'col-span-full ',
+        }
+      }, with_context = false) }}
+    </div>
   </div>
 {% endif %}

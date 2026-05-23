@@ -1,0 +1,15 @@
+{# >>> Comp Settings #}
+{% set compDefaults = {
+  data: {
+    name: 's-anchor',
+    anchor: '',
+  },
+} %}
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+} %}
+
+{% if props.data.anchor %}
+  <span id="{{ props.data.anchor }}" class="{{ props.data.name }}"></span>
+{% endif %}

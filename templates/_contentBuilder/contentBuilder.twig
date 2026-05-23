@@ -22,35 +22,58 @@
       {% set data = null %}
 
       {% switch matrixBlock.type.handle %}
+        {% case 'text' %}
+          {% set data = {
+            text: matrixBlock.searchableRichText ??? '',
+            alignment: matrixBlock.alignment.value ??? 'left',
+          } %}
 
-        {# -- Text Section -- #}
-      {% case 'text' %}
-        {% set data = {
-          text: matrixBlock.searchableRichText ??? '',
-        } %}
+        {% case 'image' %}
+          {% set data = {
+            image: matrixBlock.image.eagerly().one() ??? null,
+            showCaption: true,
+          } %}
 
-        {# -- Image Section -- #}
-      {% case 'image' %}
-        {% set data = {
-          image: matrixBlock.image.eagerly().one() ??? null,
-          showCaption: true,
-        } %}
+        {% case 'imageAndText' %}
+          {% set data = {
+            image: matrixBlock.image.eagerly().one() ??? null,
+            showCaption: true,
+            text: matrixBlock.searchableRichText ??? '',
+            switched: matrixBlock.lightSwitch ??? false,
+            link: matrixBlock.linkBase ??? null,
+          } %}
 
-        {# -- Image and Text Section -- #}
-      {% case 'imageAndText' %}
-        {% set data = {
-          image: matrixBlock.image.eagerly().one() ??? null,
-          showCaption: true,
-          text: matrixBlock.searchableRichText ??? '',
-          switched: matrixBlock.lightSwitch ??? false,
-          link: matrixBlock.linkBase ??? null,
-        } %}
+        {% case 'link' %}
+          {% set data = {
+            link: matrixBlock.linkBase ??? null,
+            alignment: matrixBlock.alignment.value ??? 'left',
+          } %}
 
-        {# -- Link Component -- #}
-      {% case 'link' %}
-        {% set data = {
-          link: matrixBlock.linkBase ??? null,
-        } %}
+        {% case 'iconWithColumns' %}
+          {% set data = {
+            headline: matrixBlock.headline ??? '',
+            text: matrixBlock.text ??? '',
+            columns: matrixBlock.columnsWithIcons.eagerly().all()|map(c => {
+              image: c.image.eagerly().one() ??? null,
+              headline: c.headline ??? '',
+              text: c.text ??? '',
+            })
+          } %}
+
+        {% case 'quote' %}
+          {% set data = {
+            quote: matrixBlock.quote ??? '',
+            author: matrixBlock.quoteAuthor ??? '',
+            bgImage: matrixBlock.backgroundImage.eagerly().one() ??? null,
+          } %}
+
+        {% case 'calendly' %}
+          {% set data = {} %}
+
+        {% case 'anchor' %}
+          {% set data = {
+            anchor: matrixBlock.anchor ??? '',
+          } %}
 
       {% endswitch %}
 

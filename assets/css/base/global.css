@@ -9,13 +9,31 @@
     scrollbar-gutter: stable;
   }
 
+  /* Motion should calm, never demand attention — honour reduced-motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   body {
     min-height: 100vh;
     width: 100%;
     max-width: 100%;
-    background-color: var(--color-bg);
+    background-color: white;
     color: var(--color-text);
-    font-family: var(--font-serif);
+    font-family: var(--font-serif), serif;
+    font-size: var(--font-size-lg);
+    line-height: var(--text-lg--line-height);
     font-weight: 500;
     font-feature-settings: 'kern' 1, 'liga' 1;
     font-optical-sizing: auto;

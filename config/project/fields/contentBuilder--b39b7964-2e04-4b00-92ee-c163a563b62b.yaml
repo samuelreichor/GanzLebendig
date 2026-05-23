@@ -5,11 +5,73 @@ name: Content
 searchable: true
 settings:
   createButtonLabel: 'New Block'
+  defaultIndexViewMode: cards
+  enableVersioning: false
   entryTypes:
-    - e1c7cfa0-c34e-4547-bd78-7eb71f251565 # Text
-    - 7c8c16e4-d5b0-4b0a-9d51-5c9f64a9a226 # Link
-    - d0e0b0d1-923a-4023-8086-6d35fc5ccaa4 # Image
-    - ef87572b-5f4b-48cf-8d27-f9c045a9044f # Image and Text
+    -
+      __assoc__:
+        -
+          - uid
+          - e1c7cfa0-c34e-4547-bd78-7eb71f251565 # Text
+        -
+          - group
+          - Allgemein
+    -
+      __assoc__:
+        -
+          - uid
+          - 7c8c16e4-d5b0-4b0a-9d51-5c9f64a9a226 # Link
+        -
+          - group
+          - Allgemein
+    -
+      __assoc__:
+        -
+          - uid
+          - d0e0b0d1-923a-4023-8086-6d35fc5ccaa4 # Image
+        -
+          - group
+          - Allgemein
+    -
+      __assoc__:
+        -
+          - uid
+          - ef87572b-5f4b-48cf-8d27-f9c045a9044f # Image and Text
+        -
+          - group
+          - Allgemein
+    -
+      __assoc__:
+        -
+          - uid
+          - 08d55ecc-2c3e-4faa-ac8b-1f22b08518e3 # Anchor
+        -
+          - group
+          - Mehr
+    -
+      __assoc__:
+        -
+          - uid
+          - 14f4e1d2-b40a-4f03-835c-c3a11eea5b90 # Quote
+        -
+          - group
+          - Mehr
+    -
+      __assoc__:
+        -
+          - uid
+          - 40ef5e0e-e83d-4fcc-9ce3-1094cb6ab951 # Icon with Columns
+        -
+          - group
+          - Mehr
+    -
+      __assoc__:
+        -
+          - uid
+          - 91c691ce-31c3-455b-b3db-6155955e919c # Calendly
+        -
+          - group
+          - Mehr
   includeTableView: false
   maxEntries: null
   minEntries: null

@@ -1,0 +1,17 @@
+{% extends "_layouts/default.twig" %}
+
+{% set globals = craft.entries.section('globals').eagerly().one() %}
+{% set navigationTheme = 'light' %}
+{% block hero %}
+  {{ include('_sections/contact/contact.twig', {
+    data: {
+      image: entry.hero.image.eagerly().one(),
+      headline: entry.hero.headline ??? entry.title ??? '',
+      text: entry.hero.text ??? '',
+      link: entry.hero.linkBase ??? null,
+      address: globals.address ??? null,
+      email: globals.eMail ??? null,
+      telephone: globals.telephone ??? null,
+    },
+  }, with_context = false) }}
+{% endblock %}

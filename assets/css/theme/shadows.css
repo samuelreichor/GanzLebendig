@@ -1,0 +1,7 @@
+@theme {
+  /* Soft, diffuse, low-opacity elevation — neutral tone so it never reads as a
+     muddy colour over green/cream surfaces. Tailwind's shadow-sm/md/lg resolve here. */
+  --shadow-sm: 0 1px 2px rgba(40, 38, 36, 0.05);
+  --shadow-md: 0 6px 18px rgba(40, 38, 36, 0.07);
+  --shadow-lg: 0 16px 36px rgba(40, 38, 36, 0.09);
+}

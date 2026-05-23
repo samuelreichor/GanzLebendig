@@ -30,6 +30,7 @@ return [
         'profileMap' => [
             'pages' => 'default',
             'home' => 'default',
+            'contact' => 'default',
             'errorPages' => 'default',
         ],
 
@@ -48,6 +49,9 @@ return [
         'additionalMeta' => [
             'twitter:card' => 'summary_large_image',
             'og:type' => 'website',
+            // Keep non-production environments (e.g. dev, staging) out of search
+            // indexes. Production stays fully indexable.
+            'robots' => App::env('CRAFT_ENVIRONMENT') === 'production' ? 'all' : 'noindex, nofollow',
         ],
 
         // ------ Length constraints / validation ------
@@ -93,7 +97,7 @@ return [
             'elements' => [
                 [
                     'elementType' => Entry::class,
-                    'criteria' => ['section' => ['home', 'pages']],
+                    'criteria' => ['section' => ['home', 'pages', 'contact']],
                     'params' => [
                         'changefreq' => 'weekly',
                         'priority' => 0.8,

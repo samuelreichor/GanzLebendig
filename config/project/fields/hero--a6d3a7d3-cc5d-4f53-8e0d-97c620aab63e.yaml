@@ -55,6 +55,9 @@ settings:
                             1:
                               - handle
                               - text
+                            2:
+                              - label
+                              - Text
                             6:
                               - required
                               - false
@@ -63,13 +66,13 @@ settings:
                               - 100
                             8:
                               - dateAdded
-                              - '2026-05-17T16:17:57+00:00'
+                              - '2026-05-23T08:48:51+00:00'
                             9:
                               - uid
-                              - c77e2159-16e5-4178-b171-57d89dc64767
+                              - 8eb1469d-f878-4b03-857a-6aa6db63e854
                             12:
                               - fieldUid
-                              - a536dc09-ff34-40c6-9e0f-ab3cc3f4ce8e # Text
+                              - 9729874d-1cb1-4af2-a31b-b5cdd0e61c51 # Simple Richtext
                         -
                           __assoc__:
                             0:

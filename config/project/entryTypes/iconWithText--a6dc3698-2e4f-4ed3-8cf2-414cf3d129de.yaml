@@ -1,0 +1,76 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  ec9d1d0f-7bef-4c16-b54e-35e9b440757c:
+    cardThumbAlignment: end
+    cardView:
+      - 'layoutElement:473b9ed8-c6ca-4c04-ac5f-d4ad404aba5d'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-05-23T08:46:49+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 31453c43-6490-4c7f-ae24-da061e930401 # Image
+            handle: null
+            instructions: null
+            label: Icon
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 69148a84-11e8-43c2-90d0-9005f4866a96
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-05-23T08:43:15+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 93116f68-b0f3-4e73-818b-9d4c0a2d4b57 # Headline
+            handle: headline
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 473b9ed8-c6ca-4c04-ac5f-d4ad404aba5d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-05-23T08:43:15+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9729874d-1cb1-4af2-a31b-b5cdd0e61c51 # Simple Richtext
+            handle: text
+            instructions: null
+            label: Text
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ea0bc291-e062-4bb4-8993-4ba8dcc18cb5
+            userCondition: null
+            warning: null
+            width: 100
+        name: Inhalt
+        uid: 66254a46-10cb-4582-a39e-cd7a84ecc249
+        userCondition: null
+    thumbFieldKey: null
+handle: iconWithText
+hasTitleField: false
+icon: null
+name: 'Icon with Text'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{headline}'

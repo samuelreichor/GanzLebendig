@@ -1,0 +1,22 @@
+{% set anchorId = element.title ?? null %}
+{% if anchorId %}
+  {% set anchorValue = '#' ~ anchorId|kebab %}
+  <div class="field">
+    <div class="heading">
+      <label>{{ "Anchor"|t('site') }}</label>
+      <span class="read-only-badge">{{ "Read-only"|t('site') }}</span>
+    </div>
+    <div class="input read-only" style="position: relative;">
+      <input disabled type="text" class="nicetext text fullwidth" value="{{ anchorValue }}">
+      <button
+        type="button"
+        class="btn small"
+        style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%);"
+        title="{{ "Copy to clipboard"|t('site') }}"
+        onclick="navigator.clipboard.writeText('{{ anchorValue }}').then(() => Craft.cp.displayNotice('{{ "Copied to clipboard"|t('site') }}'))"
+      >
+        <span data-icon="clipboard" aria-hidden="true" style="margin: 0px;"></span>
+      </button>
+    </div>
+  </div>
+{% endif %}

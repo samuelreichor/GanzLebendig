@@ -17,7 +17,7 @@ settings:
   showUnpermittedSections: false
   sources:
     - singles
-    - 'section:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+    - 'section:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
   targetSiteId: null
   validateRelatedElements: false
   viewMode: list-inline

@@ -3,6 +3,7 @@
   data: {
     name: 's-link',
     text: '',
+    alignment: 'left',
   },
   classes: {
     root: 'container m-top-xs',
@@ -21,6 +22,7 @@
     {{ include('_components/linkButton/linkButton.twig', {
       data: {
         link: props.data.link,
+        align: props.data.alignment,
       },
       classes: {
         custom: 'col-span-full',

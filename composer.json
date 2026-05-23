@@ -2,14 +2,13 @@
   "require": {
     "craftcms/ckeditor": "^5.5.0",
     "craftcms/cms": "^5.10.1",
-    "doublesecretagency/craft-cpcss": "^3.0.0",
     "nystudio107/craft-emptycoalesce": "^5.0.0",
-    "nystudio107/craft-templatecomments": "^5.0.4",
     "nystudio107/craft-vite": "^5.0.1",
     "samuelreichor/craft-insights": "^1.4.0",
     "samuelreichor/craft-quick-edit": "^5.3.1",
     "studioespresso/craft-dumper": "^5.0.1",
     "vaersaagod/seomate": "^3.3.0",
+    "verbb/expanded-singles": "^3.0.3",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {

@@ -6,11 +6,28 @@ searchable: false
 settings:
   advancedFields:
     - target
+    - download
   fullGraphqlData: false
   maxLength: 255
   showLabelField: true
   typeSettings:
     __assoc__:
+      -
+        - asset
+        -
+          __assoc__:
+            -
+              - sources
+              - '*'
+            -
+              - allowedKinds
+              - '*'
+            -
+              - showUnpermittedVolumes
+              - ''
+            -
+              - showUnpermittedFiles
+              - ''
       -
         - entry
         -
@@ -19,7 +36,7 @@ settings:
               - sources
               -
                 - singles
-                - 'section:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Pages
+                - 'section:a94c302a-1da9-4e98-96b1-36d23ce0235b' # Seiten
             -
               - showUnpermittedSections
               - '1'
@@ -44,6 +61,7 @@ settings:
     - email
     - tel
     - url
+    - asset
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Link

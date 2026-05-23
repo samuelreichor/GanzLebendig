@@ -37,11 +37,11 @@
 }
 
 @utility m-top-md {
-  @apply mt-ds-24;
+  @apply mt-ds-20;
 }
 
 @utility m-top-lg {
-  @apply mt-ds-32;
+  @apply mt-ds-24;
 }
 
 @utility p-top-xs {

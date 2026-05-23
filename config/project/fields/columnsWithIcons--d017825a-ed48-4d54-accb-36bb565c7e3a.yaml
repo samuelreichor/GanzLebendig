@@ -1,0 +1,29 @@
+columnSuffix: null
+handle: columnsWithIcons
+instructions: null
+name: 'Columns with Icons'
+searchable: false
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - a6dc3698-2e4f-4ed3-8cf2-414cf3d129de # Icon with Text
+        -
+          - group
+          - Allgemein
+  includeTableView: false
+  maxEntries: 4
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards-grid
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

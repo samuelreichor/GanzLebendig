@@ -1,0 +1,99 @@
+columnSuffix: null
+handle: heroContact
+instructions: null
+name: 'Hero Contact'
+searchable: false
+settings:
+  fieldLayouts:
+    __assoc__:
+      -
+        - ed2b5d29-8379-46f9-8d83-e729f1c009c0
+        -
+          __assoc__:
+            0:
+              - tabs
+              -
+                -
+                  __assoc__:
+                    1:
+                      - uid
+                      - 597a0a52-1a63-4a6d-8d51-9cfd8b320bce
+                    4:
+                      - elements
+                      -
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - headline
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2026-05-23T10:52:13+00:00'
+                            9:
+                              - uid
+                              - 915aa0c5-0119-43fa-9eba-ce3b779b2a73
+                            12:
+                              - fieldUid
+                              - 93116f68-b0f3-4e73-818b-9d4c0a2d4b57 # Headline
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            1:
+                              - handle
+                              - introText
+                            2:
+                              - label
+                              - 'Intro Text'
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2026-05-23T10:52:13+00:00'
+                            9:
+                              - uid
+                              - 50fa7466-01e3-4e24-8962-f0559063ffe7
+                            12:
+                              - fieldUid
+                              - 9729874d-1cb1-4af2-a31b-b5cdd0e61c51 # Simple Richtext
+                        -
+                          __assoc__:
+                            0:
+                              - type
+                              - craft\fieldlayoutelements\CustomField
+                            6:
+                              - required
+                              - false
+                            7:
+                              - width
+                              - 100
+                            8:
+                              - dateAdded
+                              - '2026-05-23T10:52:13+00:00'
+                            9:
+                              - uid
+                              - 6856685e-2708-4f55-adb5-e3dcadfc990c
+                            12:
+                              - fieldUid
+                              - 31453c43-6490-4c7f-ae24-da061e930401 # Image
+            4:
+              - cardThumbAlignment
+              - end
+  viewMode: grouped
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\ContentBlock

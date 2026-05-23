@@ -1,0 +1,10 @@
+{%- header 'Content-Type: text/plain; charset=utf-8' -%}
+{%- if craft.app.env == 'production' -%}
+User-agent: *
+Allow: /
+
+Sitemap: {{ siteUrl('sitemap.xml') }}
+{%- else -%}
+User-agent: *
+Disallow: /
+{%- endif -%}

@@ -7,6 +7,7 @@
     theme: '',
     raw: false,
     size: 'large',
+    alignment: 'left',
   },
   classes: {
     root: 'c-text--richText',
@@ -17,6 +18,11 @@
       large: 'text-lg',
       base: 'text-base',
       xl: 'text-xl',
+    },
+    alignment: {
+      left: 'text-left',
+      center: 'text-center',
+      right: 'text-right',
     }
   }
 } %}
@@ -29,7 +35,7 @@
 } %}
 
 {% if props.data.text %}
-  <{{ props.data.tag }} class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }} {{ props.data.theme == "onBackground" ? props.classes.onBackground }} {{ props.variants.size[props.data.size] }}">
+  <{{ props.data.tag }} class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }} {{ props.data.theme == "onBackground" ? props.classes.onBackground }} {{ props.variants.size[props.data.size] }} {{ props.variants.alignment[props.data.alignment] }}">
     {{ props.data.raw ? props.data.text | raw : props.data.text }}
   </{{ props.data.tag }}>
 {% endif %}

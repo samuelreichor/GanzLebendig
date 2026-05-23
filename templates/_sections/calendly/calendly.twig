@@ -1,0 +1,32 @@
+{# =========================================================================
+   Calendly (section)
+   Content builder block — full-width inline Calendly scheduling widget.
+   ========================================================================= #}
+{% set compDefaults = {
+  data: {
+    name: 's-calendly',
+    url: 'https://calendly.com/sandy-hannes',
+    height: 600,
+  },
+  classes: {
+    root: 'container m-top-sm',
+    custom: '',
+  },
+} %}
+
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
+
+<div class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
+  <div class="col-span-full">
+    {{ include('_components/calendly/calendly.twig', {
+      data: {
+        url: props.data.url,
+        height: props.data.height,
+      },
+    }, with_context = false) }}
+  </div>
+</div>

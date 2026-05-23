@@ -59,7 +59,7 @@
         position: absolute;
         content: '';
         top: 0.625rem;
-        left: 0.625rem;
+        left: 0;
         width: 0.375rem;
         height: 0.375rem;
         border-radius: 100%;

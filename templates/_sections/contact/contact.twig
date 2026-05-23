@@ -1,0 +1,147 @@
+{% set compDefaults = {
+  data: {
+    name: 's-contact',
+    image: null,
+    headline: '',
+    text: '',
+    link: null,
+    address: null,
+    email: null,
+    telephone: null,
+  },
+  classes: {
+    root: 'relative w-full bg-cream-50',
+    custom: '',
+    inner: 'container items-center pt-[calc(var(--navigation-height)+var(--ds-10))] pb-ds-16',
+    textCol: 'col-span-12 flex flex-col gap-ds-8 md:mr-ds-10',
+    intro: 'flex flex-col gap-ds-4',
+    list: 'flex flex-col gap-ds-3',
+    card: 'flex items-center gap-ds-4 rounded-lg border border-cream-200 bg-white p-ds-3',
+    cardLink: 'group transition duration-300 ease-out hover:border-sage-100',
+    icon: 'flex-none flex items-center justify-center w-12 h-12 rounded-full bg-sage-100 text-sage-700 transition-colors duration-300 group-hover:bg-sage-600 group-hover:text-cream-50',
+    value: 'text-base md:text-lg text-ink-900 leading-snug',
+    link: 'text-base md:text-lg font-medium text-ink-900 group-hover:text-sage-700 transition-colors break-words',
+    linkWrapper: 'mt-ds-2',
+    imageCol: 'col-span-12 md:col-span-6 max-md:order-first',
+  },
+} %}
+
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
+
+{% set address = props.data.address ? props.data.address.eagerly().one() ??? null : null %}
+{% set hasContact = address or props.data.email or props.data.telephone %}
+{% set hasImage = props.data.image %}
+
+<section class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
+  <div class="{{ props.classes.inner }}">
+  {# --- Text column (headline, intro, contact details, button) --- #}
+  <div class="{{ props.classes.textCol }} {{ hasImage ? 'md:col-span-6' : 'md:col-span-8' }}">
+    {% if props.data.headline or props.data.text %}
+      <div class="{{ props.classes.intro }}">
+        {{ include('_components/headline/headline.twig', {
+          data: {
+            text: props.data.headline,
+            variantSize: 'h1',
+            tag: 'h1'
+          },
+        }, with_context = false) }}
+
+        {{ include('_components/text/text.twig', {
+          data: {
+            text: props.data.text,
+            raw: true,
+            size: 'large'
+          },
+          classes: {
+            custom: 'text-ink-700'
+          },
+        }, with_context = false) }}
+      </div>
+    {% endif %}
+
+    {% if hasContact %}
+      <ul class="{{ props.classes.list }}">
+        {% if address %}
+          <li>
+            <div class="{{ props.classes.card }}">
+              <span class="{{ props.classes.icon }}">
+                {{ include('_components/icon/icon.twig', {
+                  data: {
+                    icon: 'map-pin'
+                  },
+                }, with_context = false) }}
+              </span>
+              <span class="{{ props.classes.value }}">
+                {% if address.addressLine1 %}{{ address.addressLine1 }}<br>{% endif %}
+                {% if address.postalCode or address.locality %}{{ address.postalCode }} {{ address.locality }}{% endif %}
+                {% if address.addressLine2 %}<br>{{ address.addressLine2 }}{% endif %}
+              </span>
+            </div>
+          </li>
+        {% endif %}
+
+        {% if props.data.email %}
+          <li>
+            <a href="{{ props.data.email.url }}" class="{{ props.classes.card }} {{ props.classes.cardLink }}">
+              <span class="{{ props.classes.icon }}">
+                {{ include('_components/icon/icon.twig', {
+                  data: {
+                    icon: 'mail'
+                  },
+                }, with_context = false) }}
+              </span>
+              <span class="{{ props.classes.link }}">{{ props.data.email.label }}</span>
+            </a>
+          </li>
+        {% endif %}
+
+        {% if props.data.telephone %}
+          <li>
+            <a href="{{ props.data.telephone.url }}" class="{{ props.classes.card }} {{ props.classes.cardLink }}">
+              <span class="{{ props.classes.icon }}">
+                {{ include('_components/icon/icon.twig', {
+                  data: {
+                    icon: 'phone'
+                  },
+                }, with_context = false) }}
+              </span>
+              <span class="{{ props.classes.link }}">{{ props.data.telephone.label }}</span>
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    {% endif %}
+
+    {% if props.data.link %}
+      <div class="{{ props.classes.linkWrapper }}">
+        {{ include('_components/linkButton/linkButton.twig', {
+          data: {
+            link: props.data.link,
+          },
+        }, with_context = false) }}
+      </div>
+    {% endif %}
+  </div>
+
+  {# --- Image column (hero image) --- #}
+  {% if hasImage %}
+    {{ include('_components/image/image.twig', {
+      data: {
+        image: props.data.image,
+        transform: 'square',
+        objectFit: 'cover',
+        rounded: true,
+        lazy: false,
+        sizes: '(min-width: 768px) 50vw, 100vw',
+      },
+      classes: {
+        custom: props.classes.imageCol,
+      },
+    }, with_context = false) }}
+  {% endif %}
+  </div>
+</section>

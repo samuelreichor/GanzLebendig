@@ -40,7 +40,7 @@
   --color-primary: var(--color-sage-500);
   --color-primary-hover: var(--color-sage-700);
   --color-bg: var(--color-cream-50);
-  --color-bg-muted: var(--color-cream-100);
+  --color-bg-muted: var(--color-cream-50);
   --color-text: var(--color-ink-900);
   --color-text-muted: var(--color-ink-700);
   --color-accent: var(--color-clay-500);
