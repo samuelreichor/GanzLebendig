@@ -1,4 +1,4 @@
-dateModified: 1779545013
+dateModified: 1779545394
 elementSources:
   craft\elements\Asset:
     -
@@ -157,7 +157,6 @@ meta:
   __names__:
     1a6fb051-ad40-4976-811b-de8f4ae5d694: Caption # Caption
     2c9430af-5272-4806-a33f-9364d065ac83: Default # Default
-    4ae79b2f-c5ab-47d0-9773-13ec4572bf20: 'Hero Contact' # Hero Contact
     5b4128b6-7a56-4620-a5a3-fa59c4f90211: 'Contact Form' # Contact Form
     5cce6b80-a35c-4207-82e0-3940c9091376: Images # Images
     6ae0efee-76bc-45ec-9f5c-d0e2f54d8ef0: Default # Default
@@ -170,7 +169,6 @@ meta:
     72fc0e5d-7d00-4b05-9bb2-899d78a9e66f: 'Alt Text' # Alt Text
     78e52492-6ab5-4ac9-9e70-0448d9e80744: 'Navigations Links' # Navigations Links
     91c691ce-31c3-455b-b3db-6155955e919c: Calendly # Calendly
-    531bd093-889b-45b8-bb21-f513349ff7f7: 'Headline Tag' # Headline Tag
     648c0fe1-b09f-4f06-ae84-374277216c64: Link # Link
     873f989e-0227-4995-a310-6b6fb4e377a3: Contact # Contact
     890d662d-81cb-4901-b2cb-2e971c5beded: Alignment # Alignment
@@ -192,7 +190,6 @@ meta:
     ad645962-192e-4cb8-9d81-6e3dabb5b7e2: Globals # Globals
     b1cf8299-6852-4721-b76d-f62f1749ad62: Globals # Globals
     b39b7964-2e04-4b00-92ee-c163a563b62b: Content # Content
-    cea34291-67ee-4b82-886b-549665036e0c: Icon # Icon
     d0b81f54-9f0b-47ff-8b70-ede217a82e9d: $SITE_NAME # $SITE_NAME
     d0e0b0d1-923a-4023-8086-6d35fc5ccaa4: Image # Image
     d017825a-ed48-4d54-accb-36bb565c7e3a: 'Columns with Icons' # Columns with Icons
