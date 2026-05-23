@@ -9,15 +9,40 @@ settings:
     - 5cce6b80-a35c-4207-82e0-3940c9091376 # Images
     - c5b55746-9b95-40a4-9e04-178618e02cff
     - f39c88c2-b6fe-4cd9-adb5-17e58f0ebcb8 # Files
-  ckeConfig: 6ae0efee-76bc-45ec-9f5c-d0e2f54d8ef0 # Default
-  createButtonLabel: null
+  characterLimit: null
+  css: null
+  cssFile: null
   defaultTransform: null
-  enableSourceEditingForNonAdmins: false
+  defaultUploadLocationSubpath: null
+  defaultUploadLocationVolume: null
+  fullGraphqlData: true
+  headingLevels:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+  imageEntryTypeUid: null
+  imageFieldUid: null
+  imageMode: img
+  js: null
+  jsFile: null
+  options: null
+  parseEmbeds: false
   purifierConfig: null
   purifyHtml: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
   showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  toolbar:
+    - heading
+    - '|'
+    - bold
+    - italic
+    - link
   wordLimit: null
 translationKeyFormat: null
 translationMethod: none

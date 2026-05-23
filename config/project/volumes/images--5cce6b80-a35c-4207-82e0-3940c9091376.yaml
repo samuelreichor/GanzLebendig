@@ -2,6 +2,7 @@ altTranslationKeyFormat: null
 altTranslationMethod: none
 fieldLayouts:
   f69faf1a-4a8d-42c3-8d90-4a88169e5001:
+    cardThumbAlignment: end
     tabs:
       -
         elementCondition: null
@@ -11,10 +12,10 @@ fieldLayouts:
             autocomplete: false
             autocorrect: true
             class: null
+            dateAdded: null
             disabled: false
             elementCondition: null
             id: null
-            includeInCards: false
             inputType: null
             instructions: null
             label: null
@@ -23,7 +24,6 @@ fieldLayouts:
             name: null
             orientation: null
             placeholder: null
-            providesThumbs: false
             readonly: false
             requirable: false
             size: null
@@ -36,13 +36,14 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: null
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 72fc0e5d-7d00-4b05-9bb2-899d78a9e66f # Alt Text
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -51,13 +52,14 @@ fieldLayouts:
             warning: null
             width: 100
           -
+            dateAdded: null
+            editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 1a6fb051-ad40-4976-811b-de8f4ae5d694 # Caption
             handle: null
-            includeInCards: false
             instructions: null
             label: null
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -68,6 +70,7 @@ fieldLayouts:
         name: Content
         uid: 7ce712af-2024-42f5-876a-915e4107dbe2
         userCondition: null
+    thumbFieldKey: null
 fs: images
 handle: images
 name: Images

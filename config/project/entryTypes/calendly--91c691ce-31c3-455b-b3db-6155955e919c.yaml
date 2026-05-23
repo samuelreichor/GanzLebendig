@@ -17,7 +17,7 @@ fieldLayouts:
             type: craft\fieldlayoutelements\Tip
             uid: 27e60f17-3e7f-496d-bfd7-11866e5921e4
             userCondition: null
-        name: Inhalt
+        name: Content
         uid: a37e8844-0de9-419a-a8d4-5e165aac5398
         userCondition: null
     thumbFieldKey: null

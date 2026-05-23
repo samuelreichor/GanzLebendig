@@ -185,7 +185,7 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 50
-        name: Inhalt
+        name: Content
         uid: 29a386a8-3443-40e8-9582-4f79059d771c
         userCondition: null
     thumbFieldKey: null

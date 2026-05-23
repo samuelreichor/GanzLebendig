@@ -6,7 +6,7 @@ entryTypes:
 handle: pages
 maxAuthors: null
 minAuthors: 0
-name: Seiten
+name: Pages
 previewTargets:
   -
     label: 'Primary entry page'

@@ -6,7 +6,7 @@ entryTypes:
 handle: errorPages
 maxAuthors: 1
 minAuthors: 0
-name: 'Error Seiten'
+name: 'Error Pages'
 previewTargets:
   -
     label: 'Primary entry page'

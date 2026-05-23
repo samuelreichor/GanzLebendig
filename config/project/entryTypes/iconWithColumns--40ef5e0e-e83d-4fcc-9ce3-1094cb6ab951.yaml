@@ -56,7 +56,7 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
-        name: Inhalt
+        name: Content
         uid: 1198f14a-9382-4d72-826b-1ed0416e39b7
         userCondition: null
     thumbFieldKey: null
