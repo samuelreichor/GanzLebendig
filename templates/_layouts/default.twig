@@ -18,7 +18,7 @@
     }, with_context = false) }}
   {% endblock %}
 
-  <main id="main">
+  <main id="main" class="flex flex-col">
     {% block hero %}
       {{ include('_sections/hero/hero.twig', {
         data: {
@@ -31,7 +31,7 @@
     {% endblock %}
 
     {% block content %}
-      <div class="relative z-10 bg-white flow-root p-bottom-lg">
+      <div class="relative z-10 grow bg-white flow-root p-bottom-lg">
         {{ include('_contentBuilder/contentBuilder.twig', {
           data: {
             contentQuery: entry.contentBuilder ??? null,

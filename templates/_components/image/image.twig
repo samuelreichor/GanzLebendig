@@ -64,7 +64,10 @@
 
   {% set bgStyle = props.data.dominantColor ? 'background-color: ' ~ props.data.dominantColor ~ ';' : '' %}
   {% set fitStyle = props.data.objectFit ? 'object-fit: ' ~ props.data.objectFit ~ ';' : '' %}
-  {% set inlineStyle = (bgStyle ~ fitStyle)|trim %}
+  {# Honour the asset's focal point when object-fit crops the image in the browser —
+     otherwise the browser crops from the centre and ignores the chosen focal point. #}
+  {% set focalStyle = props.data.objectFit and image.kind == 'image' ? 'object-position: ' ~ image.getFocalPoint(true) ~ ';' : '' %}
+  {% set inlineStyle = (bgStyle ~ fitStyle ~ focalStyle)|trim %}
 
   {# When captioned, the layout classes live on <figure>; otherwise on the media element itself. #}
   {% set mediaClasses = hasCaption ? '' : (props.classes.root ~ ' ' ~ props.classes.custom)|trim %}
