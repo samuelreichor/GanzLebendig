@@ -1,0 +1,25 @@
+{# >>> Comp Settings #}
+{% set compDefaults = {
+  data: {
+    name: 's-embed',
+    embedCode: '',
+  },
+  classes: {
+    root: 'container m-top-md',
+    custom: '',
+  },
+} %}
+
+{# >>> Merge data / classes #}
+{% set props = {
+  data: data is defined and data is iterable ? compDefaults.data | merge(data) : compDefaults.data,
+  classes: classes is defined and classes is iterable ? compDefaults.classes | merge(classes) : compDefaults.classes,
+} %}
+
+{% if props.data.embedCode %}
+  <div class="{{ props.data.name }} {{ props.classes.root }} {{ props.classes.custom }}">
+    <div class="col-span-full [&_iframe]:w-full [&_iframe]:h-auto [&_iframe]:aspect-video">
+      {{ props.data.embedCode|raw }}
+    </div>
+  </div>
+{% endif %}

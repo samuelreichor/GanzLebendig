@@ -72,6 +72,14 @@ settings:
         -
           - group
           - Mehr
+    -
+      __assoc__:
+        -
+          - uid
+          - 86a0618d-8f26-4b21-9bd2-6681211c032a # Embed
+        -
+          - group
+          - Mehr
   includeTableView: false
   maxEntries: null
   minEntries: null

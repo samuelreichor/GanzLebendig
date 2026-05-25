@@ -76,6 +76,11 @@
             anchor: matrixBlock.anchor ??? '',
           } %}
 
+      {% case 'embed' %}
+        {% set data = {
+          embedCode: matrixBlock.embedCode ??? '',
+        } %}
+
       {% endswitch %}
 
       {% if data is not null %}
