@@ -9,8 +9,6 @@
 # @since     1.0.0
 # @license   MIT
 
-# EDITED BY FREDMANSKY
-
 # CRAFT ENVIRONMENT
 .env*
 !.env.example
