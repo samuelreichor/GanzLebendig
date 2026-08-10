@@ -126,7 +126,7 @@ elementSourcesPages:
     Pages:
       icon: newspaper
 email:
-  fromEmail: admin@fredmansky.at
+  fromEmail: $SYSTEM_EMAIL
   fromName: $SITE_NAME
   replyToEmail: null
   template: ''
