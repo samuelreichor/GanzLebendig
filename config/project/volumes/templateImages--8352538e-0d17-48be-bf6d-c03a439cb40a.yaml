@@ -74,6 +74,7 @@ fieldLayouts:
 fs: templateImages
 handle: templateImages
 name: 'Template Images'
+propagationMethod: custom
 sortOrder: 2
 subpath: ''
 titleTranslationKeyFormat: null
