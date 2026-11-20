@@ -74,6 +74,7 @@ fieldLayouts:
 fs: files
 handle: files
 name: Files
+propagationMethod: custom
 sortOrder: 5
 subpath: ''
 titleTranslationKeyFormat: null
